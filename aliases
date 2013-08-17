@@ -1,0 +1,91 @@
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# don't export it because we only want it in interactive shells
+CDPATH=.:~/:~/projects
+
+export tools=~/Development/tools
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+
+export GRAILS_HOME=$tools/grails
+export GROOVY_HOME=$tools/groovy
+export GRADLE_HOME=$tools/gradle
+export NODE_PATH="/usr/local/lib/node"
+export PLAY_HOME=$tools/play
+export SCALA_HOME=$tools/scala
+
+export PATH=~/bin:~/.rbenv/shims:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:$SCALA_HOME/bin:~/.cabal/bin:$PATH
+
+export EDITOR=vim
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+    alias ls='ls -G'
+fi
+
+# some more aliases
+alias ll='ls -l'
+alias la='ls -a'
+
+alias god='cd ~/Development'
+alias got='cd $tools'
+
+alias ajaxrdoc="rdoc --fmt ajax --exclude '.*generator.*' --exclude '.*test.*' --exclude '.*spec.*'"
+alias c='clear'
+alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
+alias grep='grep --color --line-number'
+alias vim='mvim -v' #use mvim version of vim as terminal vim
+alias vi='mvim -v' #use mvim version of vim as terminal vim
+alias gvim='mvim -p'
+alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
+alias watch='watchr ~/.watchr.rb'
+alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
+
+alias icons='cd ~/Pictures/icons; open -a Preview **/*.png **/*.tiff  **/*.jpg'
+alias preview='open -a Preview'
+
+# Databses
+alias mysql='/usr/local/bin/mysql -u root --socket=/tmp/mysql.sock'
+alias mysqladmin='/usr/local/bin/mysqladmin -u root --socket=/tmp/mysql.sock'
+alias mysql_config='/usr/local/bin/mysql_config'
+alias pg_start='pg_ctl -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl stop -s -m fast'
+alias pg_status='pg_ctl status'
+
+# Rails
+alias bx='bundle exec'
+alias devlog='tail -200 -f log/development.log'
+alias log='tail -f log/development.log'
+alias restart='touch tmp/restart.txt'
+alias rs='bundle exec rails s'
+alias rc='bundle exec rails c'
+alias rg='bundle exec rails g'
+alias sc='./script/console'
+alias sg='./script/generate'
+alias sp='./script/spec -cfs'
+alias ss='./script/server'
+alias ssd='./script/server --debugger'
+alias testlog='tail -200 -f log/test.log'
+alias cukelog='tail -200 -f log/cucumber.log'
+alias rails-bootstrap='ruby ~/rails-bootstrap/rails-bootstrap.rb'
+
+# Rack
+alias ru='bundle exec rackup config.ru'
+
+# Git
+alias gitrm='git ls-files -z --deleted | xargs -0 git rm'
+alias gitx='gitx --all'
+alias gpci='git-pair commit'
+alias gp='git pair'
+alias push='git push'
+alias rebase='git fetch; git rebase origin/master'
+alias st='git status'
+alias gst='git status'
+alias gc='git commit'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias go='git co'
+alias getch='git fetch'
+alias tug='git pull -r origin'
+alias gf='git br -a | grep '
+

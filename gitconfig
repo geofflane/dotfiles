@@ -1,0 +1,33 @@
+[user]
+  name = Geoff Lane
+  email = geoff@zorched.net
+[core]
+  excludesfile = /Users/geoff/.gitignore_global
+[difftool "sourcetree"]
+  cmd = /Applications/Development/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/Development/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+  trustExitCode = true
+[credential]
+  helper = osxkeychain
+[push]
+  default = simple
+[color]
+  ui = true
+  branch = auto
+  diff   = auto
+  status = auto
+[alias]
+  type = cat-file -t
+  dump = cat-file -p
+  br   = branch
+  ch   = cherry -v origin
+  ci   = commit
+  co   = checkout
+  df   = diff
+  mine = log --author=Pairing
+  st   = status
+  lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
+  put  = "push origin HEAD"
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
