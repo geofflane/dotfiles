@@ -1,6 +1,8 @@
 [user]
   name = Geoff Lane
   email = geoff@zorched.net
+[github]
+  user = geofflane
 [core]
   excludesfile = /Users/geoff/.gitignore_global
 [difftool "sourcetree"]
@@ -31,3 +33,4 @@
   lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
   put  = "push origin HEAD"
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
