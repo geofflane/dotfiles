@@ -14,7 +14,7 @@ export NODE_PATH="/usr/local/lib/node"
 export PLAY_HOME=$tools/play
 export SCALA_HOME=$tools/scala
 
-export PATH=~/bin:~/.rbenv/shims:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:$SCALA_HOME/bin:~/.cabal/bin:$PATH
+export PATH=~/bin:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:$SCALA_HOME/bin:~/.cabal/bin:$PATH
 
 export EDITOR=vim
 
