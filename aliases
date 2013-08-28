@@ -15,6 +15,8 @@ export PLAY_HOME=$tools/play
 export SCALA_HOME=$tools/scala
 
 export PATH=~/bin:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:$SCALA_HOME/bin:~/.cabal/bin:$PATH
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 export EDITOR=vim
 

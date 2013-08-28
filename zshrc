@@ -44,5 +44,3 @@ source ~/.aliases
 # don't overwrite files with > redirection by default
 setopt noclobber
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
