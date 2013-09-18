@@ -5,7 +5,7 @@
 CDPATH=.:~/:~/projects
 
 export tools=~/Development/tools
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 
 export GRAILS_HOME=$tools/grails
 export GROOVY_HOME=$tools/groovy
@@ -36,9 +36,12 @@ alias ajaxrdoc="rdoc --fmt ajax --exclude '.*generator.*' --exclude '.*test.*' -
 alias c='clear'
 alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 alias grep='grep --color --line-number'
-alias vim='mvim -v' #use mvim version of vim as terminal vim
-alias vi='mvim -v' #use mvim version of vim as terminal vim
-alias gvim='mvim -p'
+# if mvim is available, then use that on the terminal too
+if [[ -x $(whence -p mvim) ]] ; then
+ alias vim='mvim -v'
+ alias vi='mvim -v'
+ alias gvim='mvim -p'
+fi
 alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
 alias watch='watchr ~/.watchr.rb'
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
