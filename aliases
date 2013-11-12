@@ -18,7 +18,7 @@ export PATH=~/bin:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export EDITOR=vim
+export EDITOR='vim -v -N'
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -42,8 +42,8 @@ alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 alias grep='grep --color --line-number'
 # if mvim is available, then use that on the terminal too
 if [[ -x $(whence -p mvim) ]] ; then
- alias vim='mvim -v'
- alias vi='mvim -v'
+ alias vim='mvim -v -N'
+ alias vi='mvim -v -N'
  alias gvim='mvim -p'
 fi
 alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
@@ -93,7 +93,6 @@ alias gst='git status'
 alias gc='git commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
-# alias go='git co'
 alias getch='git fetch'
 alias tug='git pull -r origin'
 alias gf='git br -a | grep '
