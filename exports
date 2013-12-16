@@ -1,17 +1,17 @@
+
+export EDITOR='vim -v -N'
+
 export tools=~/Development/tools
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 
 export GRAILS_HOME=$tools/grails
 export GROOVY_HOME=$tools/groovy
 export GRADLE_HOME=$tools/gradle
-export NODE_PATH="/usr/local/lib/node"
+export NODE_PATH=/usr/local/lib/node
 export PLAY_HOME=$tools/play
 export SCALA_HOME=$tools/scala
 
 export PATH=~/bin:$GRAILS_HOME/bin:$GRADLE_HOME/bin:$GROOVY_HOME/bin:$PLAY_HOME:$SCALA_HOME/bin:~/.cabal/bin:$PATH
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export EDITOR='vim -v -N'
-
+export PATH=/usr/local/heroku/bin:$PATH
 

@@ -4,11 +4,6 @@
 # don't export it because we only want it in interactive shells
 CDPATH=.:~/:~/projects
 
-export tools=~/Development/tools
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
-
-export EDITOR='vim -v -N'
-
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
   if [[ $OSTYPE =~ ^darwin ]]; then
