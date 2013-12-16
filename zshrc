@@ -41,9 +41,11 @@ ZSH_THEME=geoff
 plugins=(brew battery bundler cabal gem git github go heroku osx rails rake ruby rbenv sbt scala tmux)
 
 source ~/.config-files/exports
-source ~/.config-files/aliases
 
 source $ZSH/oh-my-zsh.sh
+
+# Do it after oh-my-zsh or your CDPATH and other goodies will be clobbered
+source ~/.config-files/aliases
 
 # don't overwrite files with > redirection by default
 setopt noclobber
