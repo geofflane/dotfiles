@@ -40,10 +40,10 @@ ZSH_THEME=geoff
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew battery bundler cabal gem git github go heroku osx rails rake ruby rbenv sbt scala tmux)
 
-source $ZSH/oh-my-zsh.sh
+source ~/.config-files/exports
+source ~/.config-files/aliases
 
-# Customize to your needs...
-source ~/.aliases
+source $ZSH/oh-my-zsh.sh
 
 # don't overwrite files with > redirection by default
 setopt noclobber
