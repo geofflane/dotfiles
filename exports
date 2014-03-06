@@ -1,6 +1,8 @@
 
 export EDITOR='vim'
-export VISUAL='mvim'
+# We've got mvim aliased to gvim in darwin too
+export VISUAL='gvim'
+
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 export NODE_PATH=/usr/local/lib/node

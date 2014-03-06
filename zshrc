@@ -38,7 +38,7 @@ ZSH_THEME=geoff
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew battery bundler cabal gem git github go heroku osx rails rake ruby rbenv sbt scala tmux)
+plugins=(brew battery bundler cabal gem git github go heroku lein osx postgres rails rake ruby rbenv tmux)
 
 source ~/.config-files/exports
 
