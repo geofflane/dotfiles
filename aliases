@@ -10,7 +10,7 @@ if [ "$TERM" != "dumb" ]; then
     alias ls='ls -G'
   else
     alias ls='ls --color=auto'
-  fi 
+  fi
 fi
 
 # some more aliases
