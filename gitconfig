@@ -5,6 +5,7 @@
   user = geofflane
 [core]
   excludesfile = /Users/geoff/.gitignore_global
+	editor = mvim -f --nomru
 [difftool "sourcetree"]
 	cmd = /Applications/Development/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -34,3 +35,6 @@
   put  = "push origin HEAD"
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   tug  = pull --rebase
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
