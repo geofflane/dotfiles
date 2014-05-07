@@ -29,7 +29,7 @@
   ci   = commit
   co   = checkout
   df   = diff
-  mine = log --author=Pairing
+  mine = log --author=Geoff
   st   = status
   lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
   put  = "push origin HEAD"
