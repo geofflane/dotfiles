@@ -50,3 +50,5 @@ source ~/.config-files/aliases
 # don't overwrite files with > redirection by default
 setopt noclobber
 
+autoload -U zmv
+alias mmv='noglob zmv -W'
