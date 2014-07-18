@@ -4,7 +4,7 @@ export EDITOR='vim'
 export VISUAL='gvim'
 
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home
 export NODE_PATH=/usr/local/lib/node
 
 export PATH=~/bin:~/.cabal/bin:$PATH
