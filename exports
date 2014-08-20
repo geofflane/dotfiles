@@ -11,3 +11,4 @@ export PATH=~/bin:~/.cabal/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
 
+export GOPATH=~/Development/go
