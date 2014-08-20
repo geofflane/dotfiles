@@ -1,3 +1,4 @@
+:set +m
 let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
 let cmd run = (run ++) . ghciEscapeShellArg
 :def! search return . cmd ":! hoogle --color "
