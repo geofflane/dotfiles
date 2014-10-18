@@ -15,7 +15,7 @@
 [credential]
   helper = osxkeychain
 [push]
-  default = current
+  default = simple
 [color]
   ui = true
   branch = auto
