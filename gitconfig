@@ -33,9 +33,9 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [merge]
-	tool = extMerge
-[mergetool "extMerge"]
-	cmd = extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-	trustExitCode = false
-[diff]
-	external = extDiff
+	tool = p4merge
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "p4merge"]
+	path = /usr/local/bin/p4merge
