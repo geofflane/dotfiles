@@ -6,12 +6,6 @@
 [core]
   excludesfile = /Users/geoff/.gitignore_global
 	editor = mvim -f --nomru
-[difftool "sourcetree"]
-	cmd = /Applications/Development/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Development/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-	trustExitCode = true
 [credential]
   helper = osxkeychain
 [push]
@@ -38,3 +32,10 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[merge]
+	tool = extMerge
+[mergetool "extMerge"]
+	cmd = extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	trustExitCode = false
+[diff]
+	external = extDiff
