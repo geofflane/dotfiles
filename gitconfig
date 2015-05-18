@@ -30,8 +30,9 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   tug  = pull --rebase
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
 [merge]
 	tool = p4merge
 [mergetool]
@@ -39,3 +40,7 @@
 	keepBackup = false
 [mergetool "p4merge"]
 	path = /usr/local/bin/p4merge
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
