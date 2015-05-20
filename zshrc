@@ -50,5 +50,8 @@ source ~/.config-files/aliases
 # don't overwrite files with > redirection by default
 setopt noclobber
 
+# If I misspell something, correct it
+setopt correct
+
 autoload -U zmv
 alias mmv='noglob zmv -W'
