@@ -3,6 +3,10 @@ export EDITOR='vim'
 # We've got mvim aliased to gvim in darwin too
 export VISUAL='gvim'
 
+if [[ $OSTYPE =~ ^darwin ]]; then
+  export PGDATA=/usr/local/var/postgres
+fi
+
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 export NODE_PATH=/usr/local/lib/node
