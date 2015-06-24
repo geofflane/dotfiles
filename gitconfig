@@ -5,11 +5,11 @@
   user = geofflane
 [core]
   excludesfile = /Users/geoff/.gitignore_global
-	editor = mvim -f --nomru
+  editor = mvim -f --nomru
 [credential]
   helper = osxkeychain
 [push]
-  default = simple
+  default = current
 [color]
   ui = true
   branch = auto
@@ -30,21 +30,25 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   tug  = pull --rebase
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 [merge]
-	tool = p4merge
+  tool = p4merge
 [mergetool]
-	prompt = false
-	keepBackup = false
+  prompt = false
+  keepBackup = false
 [mergetool "p4merge"]
-	path = /usr/local/bin/p4merge
+  path = /usr/local/bin/p4merge
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
+[rerere]
+  enabled = true
+[pull]
+  rebase = preserve
