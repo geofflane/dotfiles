@@ -8,7 +8,7 @@ if [[ $OSTYPE =~ ^darwin ]]; then
 fi
 
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
 export NODE_PATH=/usr/local/lib/node
 
 export PATH=~/bin:~/.cabal/bin:$PATH
