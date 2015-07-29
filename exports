@@ -10,9 +10,11 @@ fi
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
 export NODE_PATH=/usr/local/lib/node
+export NVM_DIR=~/.nvm
 
 export PATH=~/bin:~/.cabal/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
+export PATH=$NVM_DIR:$PATH
 
 export GOPATH=~/Development/go

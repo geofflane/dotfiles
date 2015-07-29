@@ -6,3 +6,4 @@ fi
 
 [[ -s "$HOME/.oracle_client" ]] && source "$HOME/.oracle_client"
 
+[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
