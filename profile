@@ -51,7 +51,7 @@ xterm*|rxvt*)
 esac
 
 # RBenv rehashing
-export RBENV_ROOT=`brew --prefix rbenv`
+# export RBENV_ROOT=`brew --prefix rbenv`
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # enable programmable completion features (you don't need to enable
