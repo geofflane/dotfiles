@@ -4,6 +4,7 @@ if [ -x /usr/libexec/path_helper ]; then
     eval `/usr/libexec/path_helper -s`
 fi
 
-[[ -s "$HOME/.oracle_client" ]] && source "$HOME/.oracle_client"
-
 [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+
+eval "$($HOME/.exenv/bin/exenv init -)"
+

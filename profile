@@ -6,7 +6,6 @@
 [ -z "$PS1" ] && return
 
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
-[[ -s "$HOME/.oracle_client" ]] && source "$HOME/.oracle_client"
 
 # don't put duplicate lines in the history. See bash(1) for more options
 #export HISTCONTROL=ignoredups
