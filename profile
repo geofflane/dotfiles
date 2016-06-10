@@ -60,6 +60,3 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
-if [ -f $(brew --prefix nvm)/nvm.sh ]; then
-  source $(brew --prefix nvm)/nvm.sh
-fi
