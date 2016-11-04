@@ -59,7 +59,7 @@ alias mmv='noglob zmv -W'
 #
 # Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
 
-
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+
