@@ -5,7 +5,7 @@
   user = geofflane
 [core]
   excludesfile = /Users/geoff/.gitignore_global
-  editor = vim -f --nomru
+	editor = mvim -v -N -f --nomru
 [credential]
   helper = osxkeychain
 [push]
