@@ -63,7 +63,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 
-eval "$($HOME/.exenv/bin/exenv init -)"
+if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
 hitch() {
   command hitch "$@"

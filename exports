@@ -7,9 +7,7 @@ if [[ $OSTYPE =~ ^darwin ]]; then
   export PGDATA=/usr/local/var/postgres
 fi
 
-
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
-export EXENV_DIR=~/.exenv/bin
 
 export PATH=~/bin:~/.cabal/bin:$PATH
 ### Added by the Heroku Toolbelt
@@ -17,3 +15,4 @@ export PATH=/usr/local/heroku/bin:$PATH
 export PATH=$EXENV_DIR:$PATH
 
 export GOPATH=~/Development/go
+export NVM_DIR="/Users/geoff/.nvm"
