@@ -38,7 +38,7 @@ ZSH_THEME=geoff
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws battery bundler colored-man gem git mix-fast nvm osx postgres rails rake-fast ruby rbenv tmux)
+plugins=(aws battery bundler colored-man gem git mix nvm osx postgres rails rake-fast ruby rbenv tmux)
 
 source ~/.config-files/exports
 
@@ -58,8 +58,6 @@ alias mmv='noglob zmv -W'
 # Add the following to your ~/.bashrc or ~/.zshrc
 #
 # Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
