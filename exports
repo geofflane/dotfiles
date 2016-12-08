@@ -1,3 +1,4 @@
+# vim: set filetype=sh:
 
 export EDITOR='vim'
 # We've got mvim aliased to gvim in darwin too
