@@ -6,14 +6,14 @@ export VISUAL='gvim'
 
 if [[ $OSTYPE =~ ^darwin ]]; then
   export PGDATA=/usr/local/var/postgres
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 fi
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
+if [[ -d ~/.cabal ]]; then
+  export PATH=~/.cabal/bin:$PATH
+fi
 
-export PATH=~/bin:~/.cabal/bin:$PATH
-### Added by the Heroku Toolbelt
-export PATH=/usr/local/heroku/bin:$PATH
-export PATH=$EXENV_DIR:$PATH
+export EXENV_DIR=~/.exenv
+export NVM_DIR=~/.nvm
 
-export GOPATH=~/Development/go
-export NVM_DIR="/Users/geoff/.nvm"
+export PATH=$EXENV_DIR/bin:$NVM_DIR/bin:$PATH

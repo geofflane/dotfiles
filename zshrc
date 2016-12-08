@@ -56,5 +56,9 @@ setopt correct
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
+# exenv init
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
+
+export NVM_DIR="/home/geoff/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

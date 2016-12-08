@@ -14,6 +14,12 @@ if [ "$TERM" != "dumb" ]; then
   fi
 fi
 
+if [[ ! -x $(whence -p pbcopy) ]]; then
+  # On linux we can still do a pbcopy like thing
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
+
 # some more aliases
 alias ll='ls -l'
 alias la='ls -a'
@@ -28,12 +34,14 @@ if [[ -x $(whence -p mvim) ]] ; then
  alias vi='mvim -v -N'
  alias gvim='mvim -p'
 fi
+
 alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
 
-alias icons='cd ~/Pictures/icons; open -a Preview **/*.png **/*.tiff  **/*.jpg'
-alias preview='open -a Preview'
-
+if [[ $OSTYPE =~ ^darwin ]]; then
+  alias icons='cd ~/Pictures/icons; open -a Preview **/*.png **/*.tiff  **/*.jpg'
+  alias preview='open -a Preview'
+fi
 
 # Rails
 alias bx='bundle exec'
