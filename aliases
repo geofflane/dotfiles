@@ -17,13 +17,10 @@ fi
 alias ll='ls -l'
 alias la='ls -a'
 
-alias god='cd ~/Development'
-alias got='cd $tools'
-
-alias ajaxrdoc="rdoc --fmt ajax --exclude '.*generator.*' --exclude '.*test.*' --exclude '.*spec.*'"
 alias c='clear'
 alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 alias grep='grep --color --line-number'
+
 # if mvim is available, then use that on the terminal too
 if [[ -x $(whence -p mvim) ]] ; then
  alias vim='mvim -v -N'
@@ -31,19 +28,11 @@ if [[ -x $(whence -p mvim) ]] ; then
  alias gvim='mvim -p'
 fi
 alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
-alias watch='watchr ~/.watchr.rb'
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
 
 alias icons='cd ~/Pictures/icons; open -a Preview **/*.png **/*.tiff  **/*.jpg'
 alias preview='open -a Preview'
 
-# Databses
-alias mysql='/usr/local/bin/mysql -u root --socket=/tmp/mysql.sock'
-alias mysqladmin='/usr/local/bin/mysqladmin -u root --socket=/tmp/mysql.sock'
-alias mysql_config='/usr/local/bin/mysql_config'
-alias pg_start='pg_ctl -l /usr/local/var/postgres/server.log start'
-alias pg_stop='pg_ctl stop -s -m fast'
-alias pg_status='pg_ctl status'
 
 # Rails
 alias bx='bundle exec'
@@ -60,11 +49,6 @@ alias sp='./script/spec -cfs'
 alias ss='./script/server'
 alias ssd='./script/server --debugger'
 alias testlog='tail -200 -f log/test.log'
-alias cukelog='tail -200 -f log/cucumber.log'
-alias rails-bootstrap='ruby ~/rails-bootstrap/rails-bootstrap.rb'
-
-# Rack
-alias ru='bundle exec rackup config.ru'
 
 # Git
 alias gitrm='git ls-files -z --deleted | xargs -0 git rm'

@@ -55,9 +55,6 @@ setopt correct
 
 autoload -U zmv
 alias mmv='noglob zmv -W'
-# Add the following to your ~/.bashrc or ~/.zshrc
-#
-# Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
