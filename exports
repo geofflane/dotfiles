@@ -6,7 +6,7 @@ export VISUAL='gvim'
 
 if [[ $OSTYPE =~ ^darwin ]]; then
   export PGDATA=/usr/local/var/postgres
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
 fi
 
 if [[ -d ~/.cabal ]]; then
