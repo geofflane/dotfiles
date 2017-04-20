@@ -16,4 +16,4 @@ fi
 export EXENV_DIR=~/.exenv
 export NVM_DIR=~/.nvm
 
-export PATH=$EXENV_DIR/bin:$NVM_DIR/bin:$PATH
+export PATH=$EXENV_DIR/bin:$NVM_DIR/bin:/usr/local/sbin:$PATH
