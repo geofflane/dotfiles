@@ -14,7 +14,7 @@ if [ "$TERM" != "dumb" ]; then
   fi
 fi
 
-if [[ ! -x $(whence -p pbcopy) ]]; then
+if [[ ! -x $(which pbcopy) ]]; then
   # On linux we can still do a pbcopy like thing
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
@@ -29,7 +29,7 @@ alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 alias grep='grep --color --line-number'
 
 # if mvim is available, then use that on the terminal too
-if [[ -x $(whence -p mvim) ]] ; then
+if [[ -x $(which mvim) ]] ; then
  alias vim='mvim -v -N'
  alias vi='mvim -v -N'
  alias gvim='mvim -p'
