@@ -38,7 +38,7 @@ ZSH_THEME=geoff
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery bundler colored-man gem git mix nvm osx postgres rails rake-fast ruby rbenv tmux)
+plugins=(bundler colored-man gem git mix nvm osx postgres rails rake-fast ruby rbenv tmux)
 
 source ~/.config-files/exports
 
@@ -59,4 +59,3 @@ alias mmv='noglob zmv -W'
 # exenv init
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
