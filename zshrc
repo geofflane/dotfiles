@@ -38,7 +38,12 @@ ZSH_THEME=geoff
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler colored-man gem git mix nvm osx postgres rails rake-fast ruby rbenv tmux)
+plugins=(bundler colored-man gem git mix nvm postgres rails rake-fast ruby rbenv tmux)
+if [[ `uname` == 'Darwin' ]]; then
+  plugins+=(osx)
+fi
+
+export WORDCHARS='*?[]_-~=!#$%^(){}'
 
 source ~/.config-files/exports
 
