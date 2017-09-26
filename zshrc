@@ -61,8 +61,5 @@ setopt correct
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-# exenv init
-if which exenv > /dev/null; then eval "$(exenv init -)"; fi
-
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
