@@ -1,0 +1,56 @@
+[user]
+  name = Geoff Lane
+  email = geoff@zorched.net
+[github]
+  user = geofflane
+[core]
+  excludesfile = /Users/geoff/.gitignore_global
+  editor = gvim -v -N -f # --nomru
+[credential]
+  helper = gnome-keyring
+[push]
+  default = simple
+  followTags = true
+[color]
+  ui = true
+  branch = auto
+  diff   = auto
+  status = auto
+[alias]
+  type = cat-file -t
+  dump = cat-file -p
+  br   = branch
+  ch   = cherry -v origin
+  ci   = commit
+  co   = checkout
+  df   = diff
+  mine = log --author=Geoff
+  st   = status
+  lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
+  put  = "push origin HEAD"
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  tug  = pull --rebase
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[merge]
+  tool = p4merge
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "p4merge"]
+  path = /usr/local/bin/p4merge
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[rerere]
+  enabled = true
+[pull]
+  rebase = preserve

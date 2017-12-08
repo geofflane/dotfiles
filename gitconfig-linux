@@ -5,11 +5,12 @@
   user = geofflane
 [core]
   excludesfile = /Users/geoff/.gitignore_global
-	editor = mvim -v -N -f --nomru
+  editor = gvim -v -N -f # --nomru
 [credential]
-  helper = osxkeychain
+  helper = gnome-keyring
 [push]
-  default = current
+  default = simple
+  followTags = true
 [color]
   ui = true
   branch = auto
