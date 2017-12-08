@@ -13,7 +13,6 @@ if [[ -d ~/.cabal ]]; then
   export PATH=~/.cabal/bin:$PATH
 fi
 
-export EXENV_DIR=~/.exenv
 export NVM_DIR=~/.nvm
 
-export PATH=$EXENV_DIR/bin:$NVM_DIR/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:$NVM_DIR/bin:/usr/local/sbin:$PATH
