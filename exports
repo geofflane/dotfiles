@@ -16,3 +16,7 @@ fi
 export NVM_DIR=~/.nvm
 
 export PATH=~/bin:$NVM_DIR/bin:/usr/local/sbin:$PATH
+
+# Enable history in iex
+export ERL_AFLAGS="-kernel shell_history enabled"
+
