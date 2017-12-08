@@ -35,6 +35,11 @@ if [[ -x $(command -v mvim) ]] ; then
  alias gvim='mvim -p'
 fi
 
+# handle my muscle memory of typing mvim
+if [[ -x $(command -v gvim) ]] ; then
+  alias mvim="gvim"
+fi
+
 alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
 
