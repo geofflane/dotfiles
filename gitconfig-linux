@@ -9,7 +9,7 @@
 [credential]
   helper = gnome-keyring
 [push]
-  default = simple
+  default = upstream
   followTags = true
 [color]
   ui = true
