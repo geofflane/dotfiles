@@ -13,5 +13,7 @@ ln -s ~/.config/gitconfig-linux ~/.gitconfig
 ln -s ~/.config/gitignore_global ~/.gitignore_global
 ln -s ~/.config/plan ~/.plan
 ln -s ~/.config/tmux.conf ~/.tmux.conf
+ln -s ~/.config/xinitrc ~/.xinitrc
+ln -s ~/.config/Xresources ~/.Xresources
 ```
 
