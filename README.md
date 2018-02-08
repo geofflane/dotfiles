@@ -5,13 +5,13 @@ Config files
 * Zsh uses Oh My Zsh and it has its own as well.
 
 ```
-ln -s ~/.config-files/aliases ~/.aliases
-ln -s ~/.config-files/zshenv ~/.zshenv
-ln -s ~/.config-files/zshrc ~/.zshrc
-ln -s ~/.config-files/profile ~/.profile
-ln -s ~/.config-files/gitconfig ~/.gitconfig
-ln -s ~/.config-files/gitignore_global ~/.gitignore_global
-ln -s ~/.config-files/plan ~/.plan
-ln -s ~/.config-files/tmux.conf ~/.tmux.conf
+ln -s ~/.config/aliases ~/.aliases
+ln -s ~/.config/zshenv ~/.zshenv
+ln -s ~/.config/zshrc ~/.zshrc
+ln -s ~/.config/profile ~/.profile
+ln -s ~/.config/gitconfig-linux ~/.gitconfig
+ln -s ~/.config/gitignore_global ~/.gitignore_global
+ln -s ~/.config/plan ~/.plan
+ln -s ~/.config/tmux.conf ~/.tmux.conf
 ```
 

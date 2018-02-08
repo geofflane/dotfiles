@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Override the custom directory so I can store all my customizations in my own config git
-ZSH_CUSTOM=~/.config-files/zsh_custom
+ZSH_CUSTOM=~/.config/zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -45,12 +45,12 @@ fi
 
 export WORDCHARS='*?[]_-~=!#$%^(){}'
 
-source ~/.config-files/exports
+source ~/.config/exports
 
 source $ZSH/oh-my-zsh.sh
 
 # Do it after oh-my-zsh or your CDPATH and other goodies will be clobbered
-source ~/.config-files/aliases
+source ~/.aliases
 
 # don't overwrite files with > redirection by default
 setopt noclobber
