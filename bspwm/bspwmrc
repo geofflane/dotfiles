@@ -1,9 +1,7 @@
 #! /bin/sh
 
-source ~/.config/bspwm/panel/profile
-
 sxhkd &
-~/.config/bspwm/panel/panel &
+polybar mainBar -r -c ~/.config/polybar/config &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
