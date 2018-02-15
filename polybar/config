@@ -6,9 +6,6 @@
 ;throttle_ms = 50
 
 [colors]
-;fg = ${xrdb:color7}
-;bg = ${xrdb:color0}
-
 foreground = ${xrdb:color7:#DDDDDD}
 background = ${xrdb:color0:#111111}
 
@@ -30,27 +27,25 @@ monitor = Virtual1
 top = true
 override-redirect = true
 
-width = 1440
-height = 21
+width = 1416
+height = 20
 
-offset-x = 0
-offset-y = 0
+offset-x = 12
+offset-y = 4
 
 foreground = ${colors.fg}
 background = ${colors.bg}
 
-border-left-size = 4
-border-right-size = 4
-border-bottom-size = 4
+border-size = 2
 border-color = ${colors.fg}
 
-spacing = 1
+; spacing = 1
 lineheight = 3
 
 padding-left = 2
 padding-right = 2
 
-font-0 = DejaVu Sans Mono for Powerline:size=8
+font-0 = DejaVu Sans Mono for Powerline:size=9
 font-1 = Font Awesome 5 Free:style=Regular:size=8
 font-2 = Font Awesome 5 Free:style=Solid:size=8
 
@@ -70,7 +65,7 @@ width = 1880
 
 modules-left = bspwm
 modules-center = date time
-modules-right = 
+modules-right =
 
 tray-position = right
 
@@ -113,7 +108,7 @@ format-padding = 1
 
 [module/date]
 type = internal/date
-date =  %Y-%m-%d 
+date =  %Y-%m-%d
 format-padding = 1
 
 [module/dropbox]
@@ -212,9 +207,9 @@ label-private-padding = ${module/bspwm.label-monocle-padding}
 [module/mpd]
 type = internal/mpd
 
-format-online = <label-song>    <label-time>    <icon-prev> <toggle> <icon-next>  
+format-online = <label-song>    <label-time>    <icon-prev> <toggle> <icon-next>
 label-song = %artist% - %title%
-label-time = %elapsed% / %total% 
+label-time = %elapsed% / %total%
 
 label-offline = mpd is offline
 
