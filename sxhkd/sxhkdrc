@@ -16,6 +16,9 @@ super + @space
 super + Escape
   pkill -USR1 -x sxhkd
 
+super + l
+  i3lock-fancy -gf DejaVu-Sans-Mono-for-Powerline  -- scrot -z
+
 #
 # bspwm hotkeys
 #
