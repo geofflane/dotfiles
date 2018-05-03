@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xset -dpms  # turn off monitor DPMS which seems to cause crashes                                                                                             master ⚒  | 0b083e9
+xset s off  # turn off screensaver which is maybe related
+
