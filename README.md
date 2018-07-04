@@ -1,3 +1,10 @@
+Tools
+---------------------
+asdf:
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
+
+
 Config files
 ---------------------
 * I just link them into the root of my home directory.

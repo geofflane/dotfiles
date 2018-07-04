@@ -64,8 +64,6 @@ fi
 export ASDF_DIR="$HOME/.asdf"
 [[ -s "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
 
-if which exenv > /dev/null; then eval "$(exenv init -)"; fi
-
 hitch() {
   command hitch "$@"
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi

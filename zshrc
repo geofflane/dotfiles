@@ -43,6 +43,7 @@ SPACESHIP_DOCKER_SHOW=false
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(asdf bundler colored-man gem git mix postgres rails rake-fast ruby tmux)
 plugins=(asdf colored-man gem git mix node npm postgres tmux)
+
 if [[ `uname` == 'Darwin' ]]; then
   plugins+=(osx)
 fi
