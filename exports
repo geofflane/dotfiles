@@ -13,9 +13,7 @@ if [[ -d ~/.cabal ]]; then
   export PATH=~/.cabal/bin:$PATH
 fi
 
-export NVM_DIR=~/.nvm
-
-export PATH=~/bin:$NVM_DIR/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:/usr/local/sbin:$PATH
 
 # Enable history in iex
 export ERL_AFLAGS="-kernel shell_history enabled"

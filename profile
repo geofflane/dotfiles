@@ -54,10 +54,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# RBenv rehashing
-# export RBENV_ROOT=`brew --prefix rbenv`
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profiles
 # sources /etc/bash.bashrc).
@@ -65,8 +61,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+export ASDF_DIR="$HOME/.asdf"
+[[ -s "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
