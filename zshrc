@@ -11,7 +11,10 @@ ZSH_CUSTOM=~/.config/zsh_custom
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="dogenpunk"
-ZSH_THEME=geoff
+# ZSH_THEME=geoff
+ZSH_THEME=spaceship
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_DOCKER_SHOW=false
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
