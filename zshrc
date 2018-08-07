@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Override the custom directory so I can store all my customizations in my own config git
-ZSH_CUSTOM=~/.config/zsh_custom
+ZSH_CUSTOM=$HOME/.config/zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -15,6 +15,7 @@ ZSH_CUSTOM=~/.config/zsh_custom
 ZSH_THEME=spaceship
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_BATTERY_SHOW=false
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
