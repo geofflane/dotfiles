@@ -1,1 +1,1 @@
-/Users/geoff/.config/zsh_custom/themes/spaceship-prompt/spaceship.zsh-theme
+spaceship-prompt/spaceship.zsh-theme
