@@ -42,8 +42,8 @@ SPACESHIP_BATTERY_SHOW=false
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# plugins=(asdf bundler colored-man gem git mix postgres rails rake-fast ruby tmux)
-plugins=(asdf colored-man gem git mix node npm postgres tmux)
+# plugins=(asdf bundler colored-man-pages gem git mix postgres rails rake-fast ruby tmux)
+plugins=(asdf colored-man-pages gem git mix node npm postgres tmux)
 
 if [[ `uname` == 'Darwin' ]]; then
   plugins+=(osx)
