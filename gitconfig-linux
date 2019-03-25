@@ -26,7 +26,7 @@
   df   = diff
   mine = log --author=Geoff
   st   = status
-  lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
+  lg   = log --pretty=format:'%Cred%h%Creset - %aE -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
   put  = "push origin HEAD"
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   tug  = pull --rebase
