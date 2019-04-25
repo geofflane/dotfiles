@@ -1,4 +1,3 @@
-new-session -s dev
 selectp -t 1 # go back to the first pane
 splitw -v -c "$HOME/projects/pff/molly"  # split it into two halves
 splitw -h  -c "$HOME/projects/pff/groot" # split it into two halves
