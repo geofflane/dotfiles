@@ -4,10 +4,11 @@ export EDITOR='vim'
 # We've got mvim aliased to gvim in darwin too
 export VISUAL='gvim'
 
-if [[ $OSTYPE =~ ^darwin ]]; then
-  export PGDATA=/usr/local/var/postgres
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
-fi
+# This would be better on a host specific version
+# if [[ $OSTYPE =~ ^darwin ]]; then
+#   export PGDATA=/usr/local/var/postgres
+#   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
+# fi
 
 if [[ -d ~/.cabal ]]; then
   export PATH=~/.cabal/bin:$PATH
