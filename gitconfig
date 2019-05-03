@@ -4,7 +4,7 @@
 [github]
   user = geofflane
 [core]
-  excludesfile = /Users/geoff/.gitignore_global
+  excludesfile = ~/dotfiles/gitignore_global
   editor = gvim -v -N -f # --nomru
 [credential]
   helper = gnome-keyring

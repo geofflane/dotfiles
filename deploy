@@ -88,6 +88,11 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
+  mv $HOME/.aliases $HOME/.aliases.old
+  mv $HOME/.exports $HOME/.exports.old
+  mv $HOME/.profile $HOME/.profile.old
+  mv $HOME/.gitconfig $HOME/.gitconfig.old
+
   mv $HOME/.zshrc $HOME/.zshrc.old
   mv $HOME/.tmux.conf $HOME/.tmux.conf.old
   mv $HOME/.vimrc $HOME/.vimrc.old
@@ -98,21 +103,21 @@ fi
 
 mkdir -p .config/nvim
 
+printf "source $HOME/dotfiles/aliases" > $HOME/aliases
+printf "source $HOME/dotfiles/exports" > $HOME/exports
+printf "source $HOME/dotfiles/profile" > $HOME/profile
+printf "[include]\n  path=$HOME/dotfiles/gitconfig\n" > $HOME/.gitconfig
+printf "#include dotfiles/Xresources\n" > $HOME/.Xresources
+
 printf "source $HOME/dotfiles/zsh/zshrc" > $HOME/.zshrc
 printf "source $HOME/dotfiles/zsh/zshenv" > $HOME/.zshenv
-printf "so $HOME/dotfiles/vim/vimrc.vim" > $HOME/.vimrc
+printf "so $HOME/dotfiles/vim/vimrc" > $HOME/.vimrc
 printf "so $HOME/dotfiles/nvim/init.rc" > $HOME/.config/nvim/initrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > $HOME/.tmux.conf
 
 echo
 echo "Linking in other files"
-ln -s $HOME/dotfiles/aliases $HOME/.aliases
-ln -s $HOME/dotfiles/profile $HOME/.profile
-ln -s $HOME/dotfiles/gitconfig-linux $HOME/.gitconfig
-ln -s $HOME/dotfiles/gitignore_global $HOME/.gitignore_global
 ln -s $HOME/dotfiles/plan $HOME/.plan
-ln -s $HOME/dotfiles/xinitrc $HOME/.xinitrc
-ln -s $HOME/dotfiles/Xresources $HOME/.Xresources
 
 echo
 echo "Please log out and log back in for default shell to be initialized."

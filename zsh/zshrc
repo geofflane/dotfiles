@@ -51,12 +51,12 @@ fi
 
 export WORDCHARS='*?[]_-~=!#$%^(){}'
 
-source $HOME/dotfiles/exports
+source $HOME/.exports
 
 source $ZSH/oh-my-zsh.sh
 
 # Do it after oh-my-zsh or your CDPATH and other goodies will be clobbered
-source $HOME/dotfiles/aliases
+source $HOME/.aliases
 
 # don't overwrite files with > redirection by default
 setopt noclobber
