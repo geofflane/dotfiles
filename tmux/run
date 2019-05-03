@@ -5,4 +5,4 @@ splitw -h -p 20
 selectp -t 1 # go back to the first pane
 splitw -h -c "$HOME/projects/pff/galaxy" # split it into two halves
 selectp -t 1 # go back to the first pane
-
+rename-window run

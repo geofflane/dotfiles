@@ -1,0 +1,22 @@
+" Example Vim graphical configuration.
+" Copy to ~/.gvimrc or ~/_gvimrc if necessary
+
+" Mac and Linux font lines are different
+" Needs powerline fonts: https://github.com/powerline/fonts
+if has("mac")
+  set guifont=Sauce\ Code\ Powerline:h12
+else
+  set guifont=Hack\ 11
+endif
+set antialias                     " MacVim: smooth fonts.
+set encoding=utf-8                " Use UTF-8 everywhere.
+set guioptions-=T                 " Hide toolbar.
+set background=dark               " Background.
+set lines=50 columns=200          " Window dimensions.
+
+" set guioptions-=r                 " Don't show right scrollbar
+
+" Quickly edit gvimrc. Only available if gui running anyway, so put it in
+" here.
+noremap <Leader>gv :tabedit $MYGVIMRC<cr>
+

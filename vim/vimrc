@@ -1,0 +1,126 @@
+" Vim configuration.
+" Copy or symlink to ~/.vimrc or ~/_vimrc if needed
+"
+
+" Install dein for plugin management
+" curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+" # For example, we just use `~/.cache/dein` as installation directory
+" sh ./installer.sh ~/.cache/dein
+"
+" Install neovim python stuff for deoplete
+" pip install neovim # or pip3 install neovim depending wht the python3 pip is called
+
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " ==== Add or remove your plugins here ====
+
+  call dein#add('scrooloose/nerdtree') " Why can't I quit you!?
+  call dein#add('mileszs/ack.vim')     " Better file searching
+
+  " File/buffer explorer e.g. <c-p>
+  " TODO: look into fzf
+  call dein#add('ctrlpvim/ctrlp.vim')
+  " call dein#add('tpope/vim-vinegar')
+
+  call dein#add('tpope/vim-surround.git') " Surround plugin FTW!
+  call dein#add('tpope/vim-repeat')       " Allows surround to repeat
+  call dein#add('tpope/vim-abolish.git')  " coerce to snake_case and coerce to camelCase
+
+  " Git support
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-git')
+
+  call dein#add('vim-scripts/tComment')  " Commenting
+  if has("mac")
+    call dein#add('zerowidth/vim-copy-as-rtf') " Copy syntax highlighted code into rtg
+  endif
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+  " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+
+  " Not sure if I need these these days
+  " " Async execution
+  " " Needs compiling after install
+  " call dein#add('Shougo/vimproc.vim')
+  " call dein#add('tpope/vim-dispatch')
+
+  call dein#add('triglav/vim-visual-increment') " visually select column of numbers, ctrl+A to increase
+  call dein#add('tpope/vim-endwise')            " Put ends after things
+  call dein#add('jacquesbh/vim-showmarks')      " Visually show marks in buffer
+
+  " ==== Completion ====
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+
+  " ========== Themes and visual ============
+  call dein#add('vim-scripts/Zenburn')
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('morhetz/gruvbox')
+  call dein#add('veloce/vim-aldmeris')
+  call dein#add('vim-airline/vim-airline') " Handy plugin for a nice statusline
+  call dein#add('vim-airline/vim-airline-themes')
+
+
+  " ========== Langauge stuff ==============
+  call dein#add('sheerun/vim-polyglot') " Polyglot: A collection of language packs, loaded on demand
+
+  call dein#add('vim-scripts/taglist.vim')
+  call dein#add('vim-scripts/SyntaxRange') " Supports multiple syntaxes in the same file
+  call dein#add('vim-syntastic/syntastic') " On-the-fly syntax checking
+
+  " Markdown
+  call dein#add('tpope/vim-markdown.git')
+
+  " Elixir
+  call dein#add('mhinz/vim-mix-format')
+  call dein#add('avdgaag/vim-phoenix')
+  call dein#add('slashmili/alchemist.vim')
+
+  " Ruby and Rails
+  call dein#add('tpope/vim-rbenv')
+  call dein#add('tpope/vim-bundler')
+  call dein#add('tpope/vim-rails')
+  call dein#add('thoughtbot/vim-rspec')
+
+  " Clojure
+  call dein#add('tpope/vim-fireplace')
+  call dein#add('tpope/vim-classpath')
+  call dein#add('vim-scripts/paredit.vim') " paredit, better paren handling for the lisps
+  call dein#add('vim-scripts/vim-niji')    " rainbow
+
+  " Haskell
+  call dein#add('eagletmt/ghcmod-vim')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+source $HOME/.config/vim/base.vim
+source $HOME/.config/vim/mappings.vim
+source $HOME/.config/vim/plugins.vim
+
