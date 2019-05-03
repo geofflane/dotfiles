@@ -2,7 +2,7 @@
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-source $HOME/.config/vim/vimrc
+source $HOME/dotfiles/vim/vimrc
 
 set guifont=Hack\ 11
 set encoding=utf-8                " Use UTF-8 everywhere.

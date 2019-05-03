@@ -1,5 +1,5 @@
 # Dark theme.-
-rofi.theme:    ~/.config/rofi/oblivion.rasi
+rofi.theme:    ~/dotfiles/rofi/oblivion.rasi
 rofi.font:     DejaVu Sans Mono, 9
 rofi.lines:    8
 rofi.width:    -80

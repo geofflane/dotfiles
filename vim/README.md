@@ -9,9 +9,6 @@ my vim config
 * eslint - `npm install eslint -g` for syntastic
 * `pip install neovim` for deoplete # or pip3 install neovim depending wht the python3 pip is called
 
-## Get the config
-Checkout project into ~/.vim
-
 ## Install dein for plugin management
 
 `curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh`
