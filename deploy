@@ -98,23 +98,23 @@ if echo "$answer" | grep -iq "^y" ;then
   mv $HOME/.zshrc $HOME/.zshrc.old
   mv $HOME/.tmux.conf $HOME/.tmux.conf.old
   mv $HOME/.vimrc $HOME/.vimrc.old
-  mv $HOME/.config/nvim/init.rc $HOME/.config/nvim/init.rc.old
+  mv $HOME/.config/nvim/init.vim $HOME/.config/nvim/init.vim.old
 else
   echo -e "\nNot backing up old dotfiles."
 fi
 
 mkdir -p .config/nvim
 
-printf "source $HOME/dotfiles/aliases" > $HOME/aliases
-printf "source $HOME/dotfiles/exports" > $HOME/exports
-printf "source $HOME/dotfiles/profile" > $HOME/profile
+printf "source $HOME/dotfiles/aliases" > $HOME/.aliases
+printf "source $HOME/dotfiles/exports" > $HOME/.exports
+printf "source $HOME/dotfiles/profile" > $HOME/.profile
 printf "[include]\n  path=$HOME/dotfiles/gitconfig\n" > $HOME/.gitconfig
 printf "#include dotfiles/Xresources\n" > $HOME/.Xresources
 
 printf "source $HOME/dotfiles/zsh/zshrc" > $HOME/.zshrc
 printf "source $HOME/dotfiles/zsh/zshenv" > $HOME/.zshenv
 printf "so $HOME/dotfiles/vim/vimrc" > $HOME/.vimrc
-printf "so $HOME/dotfiles/nvim/init.rc" > $HOME/.config/nvim/initrc
+printf "so $HOME/dotfiles/nvim/init.vim" > $HOME/.config/nvim/init.vim
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > $HOME/.tmux.conf
 
 echo
