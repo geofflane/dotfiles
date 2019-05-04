@@ -9,8 +9,9 @@ prompt_install() {
   stty $old_stty_cfg && echo
   if echo "$answer" | grep -iq "^y" ;then
     # This could def use community support
-    if [ -x "$(command -v apt)" ]; then
-      sudo apt install $1 -y
+    # Don't use apt, it's also a java util and might detect that
+    if [ -x "$(command -v apt-get)" ]; then
+      sudo apt-get install $1 -y
 
     elif [ -x "$(command -v brew)" ]; then
       brew install $1
