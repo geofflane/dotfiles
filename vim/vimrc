@@ -123,4 +123,6 @@ endif
 source $HOME/dotfiles/vim/base.vim
 source $HOME/dotfiles/vim/mappings.vim
 source $HOME/dotfiles/vim/plugins.vim
+source $HOME/dotfiles/vim/plugin/BufClose.vim
+source $HOME/dotfiles/vim/plugin/BufOnly.vim
 
