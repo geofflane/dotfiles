@@ -50,16 +50,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
-  " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
-
-
-  " Not sure if I need these these days
-  " " Async execution
-  " " Needs compiling after install
-  " call dein#add('Shougo/vimproc.vim')
-  " call dein#add('tpope/vim-dispatch')
-
-  call dein#add('triglav/vim-visual-increment') " visually select column of numbers, ctrl+A to increase
   call dein#add('tpope/vim-endwise')            " Put ends after things
   call dein#add('jacquesbh/vim-showmarks')      " Visually show marks in buffer
 
