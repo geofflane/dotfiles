@@ -127,7 +127,7 @@ date = %H:%M
 format-padding = 1
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 ;speaker_mixer = Speaker
 ;headphone_mixer = Headphone
 ;headphone_control_numid = 9
