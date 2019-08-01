@@ -58,6 +58,7 @@ noremap <Leader>cd :cd %:p:h<cr>
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
+autocmd FileType r setlocal shiftwidth=2
 
 command! DeleteWS call DeleteTrailingWS()
 func! DeleteTrailingWS()
