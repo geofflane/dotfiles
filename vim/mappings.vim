@@ -59,6 +59,7 @@ noremap <Leader>cd :cd %:p:h<cr>
 " autocmd FileType ruby setlocal foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 autocmd FileType r setlocal shiftwidth=2
+autocmd FileType R setlocal shiftwidth=2
 
 command! DeleteWS call DeleteTrailingWS()
 func! DeleteTrailingWS()
