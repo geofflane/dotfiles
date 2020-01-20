@@ -1,7 +1,6 @@
 selectp -t 1 # go back to the first pane
 splitw -v -c "$HOME/projects/pff/molly"  # split it into two halves
 splitw -h  -c "$HOME/projects/pff/groot" # split it into two halves
-splitw -h -p 20
 selectp -t 1 # go back to the first pane
 splitw -h -c "$HOME/projects/pff/galaxy" # split it into two halves
 selectp -t 1 # go back to the first pane
