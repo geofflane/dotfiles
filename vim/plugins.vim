@@ -28,15 +28,12 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec = '/bin/ls'
-let g:syntastic_javascript_eslint_exe='assets/node_modules/.bin/eslint'
-let g:syntastic_javascript_eslint_args='-f compact'
+" Only run linters when saving file
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {
+      \ 'elixir': ['credo'],
+      \ 'javascript': ['eslint']
+      \}
 
 " vim-airline
 let g:airline_powerline_fonts = 1

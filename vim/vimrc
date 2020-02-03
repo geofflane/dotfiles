@@ -75,7 +75,7 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('vim-scripts/taglist.vim')
   call dein#add('vim-scripts/SyntaxRange') " Supports multiple syntaxes in the same file
-  call dein#add('vim-syntastic/syntastic') " On-the-fly syntax checking
+  call dein#add('dense-analysis/ale') " On-the-fly syntax checking
 
   " Markdown
   call dein#add('tpope/vim-markdown.git')
