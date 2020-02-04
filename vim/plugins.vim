@@ -21,13 +21,9 @@ let g:ctrlp_by_filename = 1      " search by filename by default, that's normall
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-" syntasctic
+" ale
 " Using eslint because jshint seems to be the default, but it assumes a rails
 " project it seems and wants a config file which is annoying
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " Only run linters when saving file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
@@ -38,6 +34,7 @@ let g:ale_linters = {
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_default'
+let g:airline#extensions#ale#enabled = 1
 
 
 " vim-rspec mappings
