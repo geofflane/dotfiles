@@ -25,10 +25,16 @@ let g:deoplete#enable_at_startup = 1
 " Using eslint because jshint seems to be the default, but it assumes a rails
 " project it seems and wants a config file which is annoying
 " Only run linters when saving file
+augroup jsx_group
+  autocmd!
+  au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
       \ 'elixir': ['credo'],
-      \ 'javascript': ['eslint']
+      \ 'javascript': ['eslint'],
+      \ 'jsx': ['eslint'],
       \}
 
 " vim-airline
