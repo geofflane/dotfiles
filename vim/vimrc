@@ -66,6 +66,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('morhetz/gruvbox')
   call dein#add('veloce/vim-aldmeris')
+  call dein#add('chuling/vim-equinusocio-material')
   call dein#add('vim-airline/vim-airline') " Handy plugin for a nice statusline
   call dein#add('vim-airline/vim-airline-themes')
 

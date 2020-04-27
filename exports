@@ -1,8 +1,7 @@
 # vim: set filetype=sh:
 
-export EDITOR='vim'
-# We've got mvim aliased to gvim in darwin too
-export VISUAL='gvim'
+export EDITOR='nvim -N'
+export PAGER='less -S' # Don't wrap by default
 
 # This would be better on a host specific version
 # if [[ $OSTYPE =~ ^darwin ]]; then
