@@ -85,4 +85,6 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 # Delete all stopped containers and untagged images.
 alias dockerclean='dockercleanc || true && dockercleani'
 
-alias wakewoody='wakeonlan -i 192.168.1.255 70:85:C2:A1:B9:CE'
+alias wakewoody='wakeonlan -i 192.168.2.255 70:85:C2:A1:B9:CE'
+alias wakechomsky='wakeonlan -i 192.168.2.255 70:85:C2:B2:F6:A2'
+
