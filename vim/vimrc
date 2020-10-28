@@ -44,6 +44,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-git')
 
   call dein#add('vim-scripts/tComment')  " Commenting
+  call dein#add('triglav/vim-visual-increment') " visual increment Ctrl+A
+
   if has("mac")
     call dein#add('zerowidth/vim-copy-as-rtf') " Copy syntax highlighted code into rtg
   endif
