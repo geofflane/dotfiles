@@ -35,6 +35,8 @@ let g:ale_linters = {
       \ 'elixir': ['credo'],
       \ 'javascript': ['eslint'],
       \ 'jsx': ['eslint'],
+      \ 'typescript': ['eslint', 'tslint', 'typecheck'],
+      \ 'typescriptreact': ['eslint', 'tslint', 'typecheck'],
       \}
 
 " vim-airline
