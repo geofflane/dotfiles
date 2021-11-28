@@ -46,7 +46,7 @@ SPACESHIP_BATTERY_SHOW=false
 plugins=(asdf colored-man-pages gem git mix node npm postgres tmux)
 
 if [[ `uname` == 'Darwin' ]]; then
-  plugins+=(osx)
+  plugins+=(macos)
 fi
 
 export WORDCHARS='*?[]_-~=!#$%^(){}'
