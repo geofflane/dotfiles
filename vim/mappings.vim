@@ -55,6 +55,9 @@ endif
 " Change the directory to the path of the current file
 noremap <Leader>cd :cd %:p:h<cr>
 
+" K on a type shows definition
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2

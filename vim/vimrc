@@ -56,7 +56,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('jacquesbh/vim-showmarks')      " Visually show marks in buffer
 
   " ==== Completion ====
-  call dein#add('Shougo/deoplete.nvim')
+  " call dein#add('Shougo/deoplete.nvim')
+  call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -86,7 +87,7 @@ if dein#load_state('~/.cache/dein')
   " Elixir
   call dein#add('mhinz/vim-mix-format')
   call dein#add('avdgaag/vim-phoenix')
-  call dein#add('slashmili/alchemist.vim')
+  " call dein#add('slashmili/alchemist.vim')
 
   " Ruby and Rails
   call dein#add('tpope/vim-rbenv')

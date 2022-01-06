@@ -44,6 +44,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_default'
 let g:airline#extensions#ale#enabled = 1
 
+" COC server
+nmap <silent> <C-]> :call CocAction('jumpDefinition')<CR>
+nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<CR>
+
 
 " vim-rspec mappings
 let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
