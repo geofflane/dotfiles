@@ -45,9 +45,18 @@ let g:airline_theme='base16_default'
 let g:airline#extensions#ale#enabled = 1
 
 " COC server
-nmap <silent> <C-]> :call CocAction('jumpDefinition')<CR>
-nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> <C-]> <Plug>(coc-definition)
+nmap <silent> gs :vsp<CR><Plug>(coc-definition)<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " vim-rspec mappings
 let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
