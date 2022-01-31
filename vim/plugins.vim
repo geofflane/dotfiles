@@ -54,21 +54,33 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
-" vim-rspec mappings
-let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
-nnoremap <Leader>rc :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>rn :call RunNearestSpec()<CR>
-nnoremap <Leader>rl :call RunLastSpec()<CR>
-nnoremap <Leader>ra :call RunAllSpecs()<CR>
-" For Ruby RSpec
-augroup ruby_cmd
-  autocmd!
-  autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-augroup END
+" " vim-rspec mappings
+" let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
+" nnoremap <Leader>rc :call RunCurrentSpecFile()<CR>
+" nnoremap <Leader>rn :call RunNearestSpec()<CR>
+" nnoremap <Leader>rl :call RunLastSpec()<CR>
+" nnoremap <Leader>ra :call RunAllSpecs()<CR>
+" " For Ruby RSpec
+" augroup ruby_cmd
+"   autocmd!
+"   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+" augroup END
 
 " vim-clojure
 let g:vimclojure#HighlightBuiltins = 1
