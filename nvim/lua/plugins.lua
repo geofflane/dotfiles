@@ -22,21 +22,34 @@ Plug('mileszs/ack.vim', {
   end
 })
 
--- TODO: Look into fzf or nvim specific one
-Plug('ctrlpvim/ctrlp.vim', {
-  run = function()
-    vim.g.ctrlp_user_command = 'ag %s -l --nocolor -g ""' -- Use ag in CtrlP for listing files. Fast and respects .gitignore
-    vim.g.ctrlp_use_caching = 0                           -- ag is fast enough that CtrlP doesn't need to cache
-    vim.g.ctrlp_by_filename = 1      -- search by filename by default, that's normally what I want
-  end
-})
+-- Fuzzy finder, probably don't need Ack
+-- <C-q> to send to quickfix
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim', {
+    tag = '0.1.0',
+    config = function()
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', 'ff', builtin.find_files, {})
+      vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+      vim.keymap.set('n', 'fg', builtin.live_grep, {})
+      vim.keymap.set('n', 'fb', builtin.buffers, {})
+      vim.keymap.set('n', 'fh', builtin.help_tags, {})
+    end
+  })
 
 -- I really like surround
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
+Plug('tpope/vim-endwise')           -- Put ends after things
 
-Plug('vim-scripts/tComment')  -- Commenting
+-- Commenting
+-- gcc / V gc
+Plug('numToStr/Comment.nvim', {
+    config = function()
+      require('Comment').setup()
+    end
+  })
 Plug('triglav/vim-visual-increment') -- visual increment Ctrl+A
 
 if(vim.fn.has('mac'))
@@ -44,13 +57,9 @@ then
   Plug('zerowidth/vim-copy-as-rtf') -- Copy syntax highlighted code into rtg
 end
 
--- Plug('Shougo/neosnippet.vim')
--- Plug('Shougo/neosnippet-snippets')
+Plug('jacquesbh/vim-showmarks')     -- Visually show marks in buffer
 
-Plug('tpope/vim-endwise')           --" Put ends after things
-Plug('jacquesbh/vim-showmarks')      -- Visually show marks in buffer
-
--- LSP
+-- ====== LSP =======
 Plug('williamboman/mason.nvim', {
     config = function()
       require('mason').setup()
@@ -68,7 +77,7 @@ Plug('neovim/nvim-lspconfig', {
     config = function()
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      local opts = {noremap=true, silent=true}
+      local opts = {noremap = true, silent = true}
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -82,7 +91,7 @@ Plug('neovim/nvim-lspconfig', {
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        local bufopts = {noremap = true, silent = true, buffer = bufnr}
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -136,113 +145,72 @@ Plug('neovim/nvim-lspconfig', {
   end
 })
 
--- -- TODO: Convert to nvim-lsp?
--- Plug('neoclide/coc.nvim', {
---   merged = false,
---   rev = 'release',
---   config = function()
---     -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
---     -- delays and poor user experience.
---     vim.opt.updatetime = 300
---
---     -- Always show the signcolumn, otherwise it would shift the text each time
---     -- diagnostics appear/become resolved.
---     vim.opt.signcolumn = 'yes'
---
---     -- Use tab for trigger completion with characters ahead and navigate.
---     -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
---     -- other plugin before putting this into your config.
---     vim.cmd [[
---       inoremap <silent><expr> <TAB>
---           \ coc#pum#visible() ? coc#pum#next(1):
---           \ check_backspace() ? "\<Tab>" :
---           \ coc#refresh()
---       inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
---     ]]
---     -- Make <CR> to accept selected completion item or notify coc.nvim to format
---     -- <C-g>u breaks current undo, please make your own choice.
---     vim.cmd [[
---     inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
---       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
---     ]]
---
---     function check_backspace()
---       vim.cmd [[
---         let col = col('.') - 1
---         return !col || getline('.')[col - 1]  =~# '\s'
---       ]]
---     end
---
---     -- Use <c-space> to trigger completion.
---     if (vim.fn.has('nvim'))
---       then
---       vim.cmd [[inoremap <silent><expr> <c-space> coc#refresh()]]
---     else
---       vim.cmd [[inoremap <silent><expr> <c-@> coc#refresh()]]
---     end
---
---     vim.keymap.set('n', '<C-]>', '<Plug>(coc-definition)', {silent = true})
---     vim.keymap.set('n', 'gs', ':vsp<CR><Plug>(coc-definition)<CR>', {silent = true})
---     vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {silent = true})
---     vim.keymap.set('n', 'gy', '<Plug>(coc-type-definition)', {silent = true})
---     vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {silent = true})
---     vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {silent = true})
---
---     -- nnoremap <silent> K :call <SID>show_documentation()<CR>
---     -- function show_documentation()
---     --   if (vim.fn.index({'vim','help'}, vim.bo.filetype) >= 0)
---     --     then
---     --     vim.cmd [[execute 'h '.expand('<cword>')]]
---     --   elseif (vim.cmd('call coc#rpc#ready()'))
---     --     then
---     --     vim.cmd [[call CocActionAsync('doHover')]]
---     --   else
---     --     vim.cmd [[execute '!' . &keywordprg . " " . expand('<cword>')]]
---     --   end
---     -- end
---
---     -- Formatting selected code.
---     vim.keymap.set('n', '<LEADER>f', '<Plug>(coc-format-selected)', {silent = true})
---     vim.keymap.set('x', '<LEADER>f', '<Plug>(coc-format-selected)', {silent = true})
---     -- Symbol renaming.
---     vim.keymap.set('n', '<LEADER>rn', '<Plug>(coc-rename)', {silent = true})
---   end
--- })
-if(not vim.fn.has('nvim'))
-then
-  Plug('roxma/nvim-yarp')
-  Plug('roxma/vim-hug-neovim-rpc')
-end
-
-
 -- ========== Themes and visual ============
 -- Themes
-Plug('veloce/vim-aldmeris', {
-  config = function()
-    vim.cmd('colorscheme aldmeris')
-  end
-})
--- Plug('vim-scripts/Zenburn')
--- Plug('altercation/vim-colors-solarized')
--- Plug('morhetz/gruvbox')
--- Plug('chuling/vim-equinusocio-material')
-
--- TODO: Convert to nvim-lualine/lualine
-Plug('vim-airline/vim-airline', {
+-- Plug('veloce/vim-aldmeris', {
+--   config = function()
+--     vim.cmd('colorscheme aldmeris')
+--   end
+-- })
+Plug('EdenEast/nightfox.nvim', {
     config = function()
-      vim.g.airline_powerline_fonts = 1
-      vim.g.airline_theme = 'base16_default'
-      vim.g['airline#extensions#ale#enabled'] = 1
-    end
-  }) -- Handy plugin for a nice statusline
-Plug('vim-airline/vim-airline-themes')
+      -- Default options
+      require('nightfox').setup({
+          options = {
+            styles = {              -- Style to be applied to different syntax groups
+              comments = "bold",    -- Value is any valid attr-list value `:help attr-list`
+            },
+          },
+        })
 
+      vim.cmd('colorscheme nordfox')
+    end
+})
+
+
+Plug('nvim-lualine/lualine.nvim', {
+    config = function()
+      require('lualine').setup({
+        options = {
+          icons_enabled = true,
+          theme = 'auto',
+        }
+      })
+    end
+  })
 
 -- ========== Langauge stuff ==============
+Plug('nvim-treesitter/nvim-treesitter', {
+  config = function()
+    -- vim.cmd('TSUpdate')
+
+    require('nvim-treesitter.configs').setup({
+        -- A list of parser names, or "all"
+        ensure_installed = {
+          'elixir',
+          'lua',
+          'typescript',
+          'tsx',
+          'javascript',
+          'python',
+          'css',
+          'json'
+        },
+        -- Automatically install missing parsers when entering buffer
+        auto_install = true,
+        highlight = {
+          enabled = true
+        },
+      })
+  end
+})
+
+-- TODO: Is this needed in Neovim with tree-sitter?
 Plug('sheerun/vim-polyglot')    -- Polyglot: A collection of language packs, loaded on demand
 
-Plug('vim-scripts/taglist.vim')
-Plug('vim-scripts/SyntaxRange') -- Supports multiple syntaxes in the same file
+-- Plug('vim-scripts/taglist.vim')
+
+-- Ale for syntax checking. Maybe not needed with LSP?
 Plug('dense-analysis/ale', {     -- On-the-fly syntax checking
     config = function()
       vim.g.ale_lint_on_text_changed = 'never'
