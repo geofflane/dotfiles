@@ -42,22 +42,18 @@ end
 map('', '<Leader>ee', ':set nowrap<CR>', {noremap = true})
 map('', '<Leader>ww', ':set wrap<CR>', {noremap = true})
 
--- Quickly edit and reload vimrc
-map('', '<Leader>ev', ':tabedit $MYVIMRC<cr>', {noremap = true})
-map('', '<Leader>rv', ':call reload_config()<cr>', {noremap = true})
-
 -- Guard clause prevents redefining function while its being run during the
 -- reload which causes an error
 -- if (not vim.fn.exists("*reload_config"))
 -- then
-function reload_config()
+local function reload_config()
   vim.cmd('source $MYVIMRC')
-  if(vim.fn.has('gui_running'))
-  then
-    vim.cmd('source $MYGVIMRC')
-  end
 end
--- end
+
+vim.api.nvim_create_user_command('ReloadConfig', reload_config, {desc = 'Reload config again'})
+-- Quickly edit and reload vimrc
+map('', '<Leader>ev', ':tabedit $MYVIMRC<cr>', {noremap = true})
+map('', '<Leader>rv', ':ReloadConfig<cr>', {noremap = true})
 
 -- Change the directory to the path of the current file
 map('', '<Leader>cd', ':cd %:p:h<cr>', {noremap = true})
@@ -80,7 +76,7 @@ vim.api.nvim_create_autocmd('FileType', {
     command = 'setlocal shiftwidth=2',
 })
 
-function delete_trailing_ws()
+local function delete_trailing_ws()
   -- Save cursor position to later restore
   local curpos = vim.api.nvim_win_get_cursor(0)
 
@@ -89,8 +85,7 @@ function delete_trailing_ws()
   vim.api.nvim_win_set_cursor(0, curpos)
 end
 vim.api.nvim_create_user_command('DeleteWS', delete_trailing_ws, {desc = 'Delete trailing whitespace'})
-
-map('', '<Leader>x', ':<C-U>call delete_trailing_ws()<CR>', {noremap = true})
+map('', '<Leader>x', ':DeleteWS<CR>', {noremap = true})
 
 -- TODO: Lua?
 -- -- command! -register CopyMatches call CopyMatches(<q-reg>)
