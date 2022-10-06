@@ -29,14 +29,14 @@ map('', '<Leader>tf', ':tabfirst<cr>', {noremap = true})
 map('', '<Leader>tl', ':tablast<cr>', {noremap = true})
 map('', '<Leader>tm', ':tabmove', {noremap = true})
 
--- if (not vim.fn.has('mac'))
--- then
---   -- Let's have some regular keybindings for copy and paste
---   vmap <C-c> "+y
---   vmap <C-x> "+x
---   vmap <C-v> c<ESC>"+gf
---   imap <C-v> <C-r><C-o>+
--- end
+if (not vim.fn.has('mac'))
+then
+  -- Let's have some regular keybindings for copy and paste
+  map('v', '<C-c>', '"+y')
+  map('v', '<C-x>', '"+x')
+  map('v', '<C-v>', 'c<ESC>"+gf')
+  map('i', '<C-v>', '<C-r><C-o>+')
+end
 
 -- Quickly turn on/off wrapping
 map('', '<Leader>ee', ':set nowrap<CR>', {noremap = true})
@@ -80,25 +80,27 @@ vim.api.nvim_create_autocmd('FileType', {
     command = 'setlocal shiftwidth=2',
 })
 
-vim.cmd('command! DeleteWS call delete_trailing_ws()')
 function delete_trailing_ws()
-  -- TODO: Can this be done in Lua?
-  vim.cmd [[
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-  ]]
+  -- Save cursor position to later restore
+  local curpos = vim.api.nvim_win_get_cursor(0)
+
+  -- Search and replace trailing whitespace
+  vim.cmd([[keeppatterns %s/\s\+$//e]])
+  vim.api.nvim_win_set_cursor(0, curpos)
 end
+vim.api.nvim_create_user_command('DeleteWS', delete_trailing_ws, {desc = 'Delete trailing whitespace'})
+
 map('', '<Leader>x', ':<C-U>call delete_trailing_ws()<CR>', {noremap = true})
 
 -- TODO: Lua?
--- command! -register CopyMatches call CopyMatches(<q-reg>)
+-- -- command! -register CopyMatches call CopyMatches(<q-reg>)
 -- function copy_matches(reg)
 --   let hits = []
 --   %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
 --   let reg = empty(a:reg) ? '+' : a:reg
 --   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 -- end
+-- vim.api.nvim_create_user_command('CopyMatches', copy_matches, {desc = ''})
 
 -- Remap <CR> onto itself to make Return and Enter work the same way (open
 -- the file into the edit window)

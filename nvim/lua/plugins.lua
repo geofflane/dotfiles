@@ -142,7 +142,7 @@ Plug('veloce/vim-aldmeris', {
 -- Plug('chuling/vim-equinusocio-material')
 -- TODO: Convert to nvim-lualine/lualine
 Plug('vim-airline/vim-airline', {
-    run = function()
+    config = function()
       vim.g.airline_powerline_fonts = 1
       vim.g.airline_theme = 'base16_default'
       vim.g['airline#extensions#ale#enabled'] = 1
