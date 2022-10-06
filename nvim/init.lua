@@ -9,8 +9,6 @@ vim.opt.encoding = 'utf-8'                       -- Use UTF-8 everywhere.
 require("plugins")
 require("mappings")
 
-vim.opt.number = true
-
 vim.opt.shell = '/bin/sh'
 
 -- How to do this in Lua?
@@ -30,9 +28,7 @@ vim.opt.visualbell = true                    -- No beeping.
 vim.opt.showmatch = true                     -- Show matching brackets
 
 vim.opt.laststatus = 2                       -- Show the status line all the time
-
 vim.opt.number = true                        -- Show line numbers by default.
-
 vim.opt.hidden = true                        -- Handle multiple buffers better.
 
 vim.opt.wildmenu = true                      -- Enhanced command line completion.
