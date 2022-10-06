@@ -7,7 +7,7 @@ vim.opt.encoding = 'utf-8'                       -- Use UTF-8 everywhere.
 -- vim.opt.lines=50 columns=200           -- Window dimensions.
 
 require("plugins")
--- require("mappings")
+require("mappings")
 
 vim.opt.number = true
 
@@ -70,7 +70,7 @@ if(not vim.fn.has("mac"))
 then
   -- Put yanked text in a global clipboard so I can copy between instances like
   -- a normal person. This breaks mac though, so not there
-  -- vim.opt.clipboard=unnamedplus
+  vim.opt.clipboard = 'unnamedplus'
 end
 
 -- ignore on completions, used by command-t at least, likely others
