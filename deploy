@@ -107,6 +107,7 @@ fi
 
 # Ensure director exists
 mkdir -p .config/nvim
+ln -s $HOME/dotfiles/nvim/lua .config/nvim/lua
 
 # Create dot files to reference our dotfiles
 printf "source $HOME/dotfiles/aliases" > $HOME/.aliases
@@ -118,7 +119,7 @@ printf "#include dotfiles/Xresources\n" > $HOME/.Xresources
 printf "source $HOME/dotfiles/zsh/zshrc" > $HOME/.zshrc
 printf "source $HOME/dotfiles/zsh/zshenv" > $HOME/.zshenv
 printf "so $HOME/dotfiles/vim/vimrc" > $HOME/.vimrc
-printf "so $HOME/dotfiles/nvim/init.vim" > $HOME/.config/nvim/init.vim
+printf "so $HOME/dotfiles/nvim/init.lua" > $HOME/.config/nvim/init.lua
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > $HOME/.tmux.conf
 
 echo
