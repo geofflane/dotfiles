@@ -27,6 +27,10 @@ local plug_name = function(repo)
   return repo:match("^[%w-]+/([%w-_.]+)$")
 end
 
+-- do/run - post update hook
+-- for/ft - load this when a specific filetype is loaded
+-- on - On-demand loading: Commands or <Plug>-mappings
+
 -- "Meta-functions"
 local meta = {
 
