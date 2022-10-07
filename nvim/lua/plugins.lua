@@ -16,7 +16,7 @@ Plug('kyazdani42/nvim-tree.lua', {
 
 -- Better file searching
 Plug('mileszs/ack.vim', {
-  run = function()
+  config = function()
     vim.g.ackprg = 'ag --vimgrep --smart-case'
     vim.cmd('cnoreabbrev Ag Ack')
     vim.cmd('cnoreabbrev ag Ack')
@@ -236,36 +236,40 @@ Plug('dense-analysis/ale', {
   })
 
 -- Elixir
-Plug('mhinz/vim-mix-format')
-Plug('avdgaag/vim-phoenix')
+Plug('mhinz/vim-mix-format', {ft = {'elixir'}})
+Plug('avdgaag/vim-phoenix', {ft = {'elixir'}})
 
 -- Markdown
--- Plug('tpope/vim-markdown.git')
+Plug('tpope/vim-markdown.git', {ft = {'markdown'}})
 
 -- Ruby and Rails
--- Plug('tpope/vim-rbenv')
--- Plug('tpope/vim-bundler')
--- Plug('tpope/vim-rails')
--- Plug('thoughtbot/vim-rspec')
+-- Plug('tpope/vim-rbenv', {ft = {'ruby'}})
+-- Plug('tpope/vim-bundler', {ft = {'ruby'}})
+-- Plug('tpope/vim-rails', {ft = {'ruby'}})
+-- Plug('thoughtbot/vim-rspec', {ft = {'ruby'}})
 
 -- Clojure
 -- Plug('tpope/vim-fireplace')
 -- Plug('tpope/vim-classpath')
--- Plug('vim-scripts/paredit.vim') -- paredit, better paren handling for the lisps
--- Plug('vim-scripts/vim-niji')    -- rainbow
+-- Plug('vim-scripts/paredit', {ft = {'clojure', 'scheme'}})     -- paredit, better paren handling for the lisps
+-- Plug('vim-scripts/vim-niji', {ft = {'clojure', 'scheme'}})    -- rainbow
 -- -- vim-clojure
 -- vim.g['vimclojure#HighlightBuiltins'] = 1
 -- vim.g.clojure_align_multiline_strings = 1
 
 -- Haskell
--- Plug('eagletmt/ghcmod-vim')
 -- -- ghcmod-vim
--- if (vim.fn.has("mac") == 1)
--- then
---   vim.g.haddock_browser = "open"
---   vim.g.haddock_browser_callformat = "%s %s"
--- else
---   vim.g.haddock_browser = "/usr/bin/firefox"
--- end
+-- Plug('eagletmt/ghcmod-vim', {
+--   config = function()
+--     -- if (vim.fn.has("mac") == 1)
+--      then
+--        vim.g.haddock_browser = "open"
+--        vim.g.haddock_browser_callformat = "%s %s"
+--      else
+--        vim.g.haddock_browser = "/usr/bin/firefox"
+--      end
+--   end
+-- })
+
 
 Plug.ends()

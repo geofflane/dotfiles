@@ -1,13 +1,8 @@
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local M = require('usermod.functions');
+local bind = M.bind
 
 -- Clear search highlights by pressing return
-map('n', '<CR>', ':nohlsearch<CR>', {noremap = true, silent = true})
+bind('n', '<CR>', ':nohlsearch<CR>', {noremap = true, silent = true})
 
 -- -- netrw file browsing
 -- autocmd FileType netrw setl bufhidden=delete -- Don't try and save these buffers
@@ -19,28 +14,28 @@ map('n', '<CR>', ':nohlsearch<CR>', {noremap = true, silent = true})
 -- let g:netrw_keepdir= 0         -- Keep current directory same as browsing directory
 
 -- Tab mappings.
-map('', '<Leader>tt', ':tabnew<cr>', {noremap = true})
-map('', '<Leader>te', ':tabedit', {noremap = true})
-map('', '<Leader>tc', ':tabclose<cr>', {noremap = true})
-map('', '<Leader>to', ':tabonly<cr>', {noremap = true})
-map('', '<Leader>tn', ':tabnext<cr>', {noremap = true})
-map('', '<Leader>tp', ':tabprevious<cr>', {noremap = true})
-map('', '<Leader>tf', ':tabfirst<cr>', {noremap = true})
-map('', '<Leader>tl', ':tablast<cr>', {noremap = true})
-map('', '<Leader>tm', ':tabmove', {noremap = true})
+bind('', '<Leader>tt', ':tabnew<cr>', {noremap = true})
+bind('', '<Leader>te', ':tabedit', {noremap = true})
+bind('', '<Leader>tc', ':tabclose<cr>', {noremap = true})
+bind('', '<Leader>to', ':tabonly<cr>', {noremap = true})
+bind('', '<Leader>tn', ':tabnext<cr>', {noremap = true})
+bind('', '<Leader>tp', ':tabprevious<cr>', {noremap = true})
+bind('', '<Leader>tf', ':tabfirst<cr>', {noremap = true})
+bind('', '<Leader>tl', ':tablast<cr>', {noremap = true})
+bind('', '<Leader>tm', ':tabmove', {noremap = true})
 
 if (vim.fn.has('mac') == 0)
 then
   -- Let's have some regular keybindings for copy and paste
-  map('v', '<C-c>', '"+y')
-  map('v', '<C-x>', '"+x')
-  map('v', '<C-v>', 'c<ESC>"+gf')
-  map('i', '<C-v>', '<C-r><C-o>+')
+  bind('v', '<C-c>', '"+y')
+  bind('v', '<C-x>', '"+x')
+  bind('v', '<C-v>', 'c<ESC>"+gf')
+  bind('i', '<C-v>', '<C-r><C-o>+')
 end
 
 -- Quickly turn on/off wrapping
-map('', '<Leader>ee', ':set nowrap<CR>', {noremap = true})
-map('', '<Leader>ww', ':set wrap<CR>', {noremap = true})
+bind('', '<Leader>ee', ':set nowrap<CR>', {noremap = true})
+bind('', '<Leader>ww', ':set wrap<CR>', {noremap = true})
 
 -- Guard clause prevents redefining function while its being run during the
 -- reload which causes an error
@@ -52,14 +47,14 @@ end
 
 vim.api.nvim_create_user_command('ReloadConfig', reload_config, {desc = 'Reload config again'})
 -- Quickly edit and reload vimrc
-map('', '<Leader>ev', ':tabedit $MYVIMRC<cr>', {noremap = true})
-map('', '<Leader>rv', ':ReloadConfig<cr>', {noremap = true})
+bind('', '<Leader>ev', ':tabedit $MYVIMRC<cr>', {noremap = true})
+bind('', '<Leader>rv', ':ReloadConfig<cr>', {noremap = true})
 
 -- Change the directory to the path of the current file
-map('', '<Leader>cd', ':cd %:p:h<cr>', {noremap = true})
+bind('', '<Leader>cd', ':cd %:p:h<cr>', {noremap = true})
 
 -- K on a type shows definition
-map('n', 'K', ':call CocAction(\'doHover\')<CR>', {noremap = true, silent = true})
+bind('n', 'K', ':call CocAction(\'doHover\')<CR>', {noremap = true, silent = true})
 
 -- Automatic fold settings for specific files. Uncomment to use.
 -- autocmd FileType ruby setlocal foldmethod=syntax
@@ -76,16 +71,8 @@ vim.api.nvim_create_autocmd('FileType', {
     command = 'setlocal shiftwidth=2',
 })
 
-local function delete_trailing_ws()
-  -- Save cursor position to later restore
-  local curpos = vim.api.nvim_win_get_cursor(0)
-
-  -- Search and replace trailing whitespace
-  vim.cmd([[keeppatterns %s/\s\+$//e]])
-  vim.api.nvim_win_set_cursor(0, curpos)
-end
-vim.api.nvim_create_user_command('DeleteWS', delete_trailing_ws, {desc = 'Delete trailing whitespace'})
-map('', '<Leader>x', ':DeleteWS<CR>', {noremap = true})
+vim.api.nvim_create_user_command('DeleteWS', M.delete_trailing_ws, {desc = 'Delete trailing whitespace'})
+bind('', '<Leader>x', ':DeleteWS<CR>', {noremap = true})
 
 -- TODO: Lua?
 -- -- command! -register CopyMatches call CopyMatches(<q-reg>)
@@ -112,4 +99,11 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     pattern = {'*.es6'},
     command = "setfiletype javascript",
 })
+
+vim.api.nvim_create_user_command('BufOnly', function(args)
+  M.buf_only(args.buffer, args.bang)
+end, {nargs = '?', complete = 'buffer'})
+vim.api.nvim_create_user_command('BufClose', function(args)
+  M.buf_close(args.buffer, args.bang)
+end, {nargs = '?', complete = 'buffer'})
 
