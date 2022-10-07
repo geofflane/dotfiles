@@ -62,11 +62,12 @@ vim.opt.expandtab = true                     -- Use spaces instead of tabs becau
 vim.opt.ttyfast = true                       -- smoother output, we're not on a 1200 dialup :)
 vim.opt.mouse = 'a'                          -- It's 2015 (or later) we have mice
 
-if(not vim.fn.has("mac"))
+if (vim.fn.has("mac") == 0)
 then
   -- Put yanked text in a global clipboard so I can copy between instances like
   -- a normal person. This breaks mac though, so not there
-  vim.opt.clipboard = 'unnamedplus'
+  vim.cmd('set clipboard+=unnamedplus')
+  -- vim.opt.clipboard = 'unnamedplus'
 end
 
 -- ignore on completions, used by command-t at least, likely others

@@ -60,7 +60,7 @@ Plug('numToStr/Comment.nvim', {
 -- visual increment Ctrl+A
 Plug('triglav/vim-visual-increment')
 
-if(vim.fn.has('mac'))
+if (vim.fn.has('mac') == 1)
 then
   -- Copy syntax highlighted code into rtg
   Plug('zerowidth/vim-copy-as-rtf')
@@ -177,7 +177,6 @@ Plug('EdenEast/nightfox.nvim', {
     end
 })
 
-
 Plug('nvim-lualine/lualine.nvim', {
     config = function()
       require('lualine').setup({
@@ -216,12 +215,14 @@ Plug('nvim-treesitter/nvim-treesitter', {
 })
 
 -- TODO: Is this needed in Neovim with tree-sitter?
-Plug('sheerun/vim-polyglot')    -- Polyglot: A collection of language packs, loaded on demand
+-- Polyglot: A collection of language packs, loaded on demand
+Plug('sheerun/vim-polyglot')
 
 -- Plug('vim-scripts/taglist.vim')
 
--- Ale for syntax checking. Maybe not needed with LSP?
-Plug('dense-analysis/ale', {     -- On-the-fly syntax checking
+-- Ale for on-the-fly syntax checking.
+-- TODO: Maybe not needed with LSP?
+Plug('dense-analysis/ale', {
     config = function()
       vim.g.ale_lint_on_text_changed = 'never'
       vim.g.ale_linters = {
@@ -253,17 +254,18 @@ Plug('avdgaag/vim-phoenix')
 -- Plug('vim-scripts/paredit.vim') -- paredit, better paren handling for the lisps
 -- Plug('vim-scripts/vim-niji')    -- rainbow
 -- -- vim-clojure
--- let g:vimclojure#HighlightBuiltins = 1
--- let g:clojure_align_multiline_strings = 1
+-- vim.g['vimclojure#HighlightBuiltins'] = 1
+-- vim.g.clojure_align_multiline_strings = 1
 
 -- Haskell
 -- Plug('eagletmt/ghcmod-vim')
 -- -- ghcmod-vim
--- if has("mac")
---   let g:haddock_browser = "open"
---   let g:haddock_browser_callformat = "%s %s"
+-- if (vim.fn.has("mac") == 1)
+-- then
+--   vim.g.haddock_browser = "open"
+--   vim.g.haddock_browser_callformat = "%s %s"
 -- else
---   let g:haddock_browser="/usr/bin/firefox"
--- endif
+--   vim.g.haddock_browser = "/usr/bin/firefox"
+-- end
 
 Plug.ends()

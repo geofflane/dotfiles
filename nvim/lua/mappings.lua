@@ -29,7 +29,7 @@ map('', '<Leader>tf', ':tabfirst<cr>', {noremap = true})
 map('', '<Leader>tl', ':tablast<cr>', {noremap = true})
 map('', '<Leader>tm', ':tabmove', {noremap = true})
 
-if (not vim.fn.has('mac'))
+if (vim.fn.has('mac') == 0)
 then
   -- Let's have some regular keybindings for copy and paste
   map('v', '<C-c>', '"+y')
