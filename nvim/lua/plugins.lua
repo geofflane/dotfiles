@@ -2,8 +2,11 @@ local Plug = require 'usermod.vimplug'
 
 Plug.begin('~/.config/nvim/plugged')
 
-Plug 'kyazdani42/nvim-web-devicons' -- optional, for file icons
-Plug('kyazdani42/nvim-tree.lua', {  -- nerdtree replacement
+-- ========== General ============
+-- For file icons, used by nvim-tree and lualine
+Plug 'kyazdani42/nvim-web-devicons'
+-- File explorer/Nerdtree replacement
+Plug('kyazdani42/nvim-tree.lua', {
   config = function()
     local nvimTree = require("nvim-tree")
     nvimTree.setup()
@@ -37,11 +40,14 @@ Plug('nvim-telescope/telescope.nvim', {
     end
   })
 
--- I really like surround
+-- I REALLY like surround
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
-Plug('tpope/vim-endwise')           -- Put ends after things
+-- Put ends after things
+Plug('tpope/vim-endwise')
+-- Git support
+Plug('tpope/vim-fugitive')
 
 -- Commenting
 -- gcc / V gc
@@ -50,16 +56,20 @@ Plug('numToStr/Comment.nvim', {
       require('Comment').setup()
     end
   })
-Plug('triglav/vim-visual-increment') -- visual increment Ctrl+A
+
+-- visual increment Ctrl+A
+Plug('triglav/vim-visual-increment')
 
 if(vim.fn.has('mac'))
 then
-  Plug('zerowidth/vim-copy-as-rtf') -- Copy syntax highlighted code into rtg
+  -- Copy syntax highlighted code into rtg
+  Plug('zerowidth/vim-copy-as-rtf')
 end
 
-Plug('jacquesbh/vim-showmarks')     -- Visually show marks in buffer
+-- Visually show marks in buffer
+Plug('jacquesbh/vim-showmarks')
 
--- ====== LSP =======
+-- ========== LSP ============
 Plug('williamboman/mason.nvim', {
     config = function()
       require('mason').setup()
@@ -179,7 +189,7 @@ Plug('nvim-lualine/lualine.nvim', {
     end
   })
 
--- ========== Langauge stuff ==============
+-- ========== Langauges ==============
 Plug('nvim-treesitter/nvim-treesitter', {
   config = function()
     -- vim.cmd('TSUpdate')
