@@ -70,20 +70,33 @@ end
 Plug('jacquesbh/vim-showmarks')
 
 -- ========== LSP ============
-Plug('williamboman/mason.nvim', {
-    config = function()
-      require('mason').setup()
-    end
-  })
+Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim', {
     config = function()
+      require('mason').setup()
       require("mason-lspconfig").setup({
-          ensure_installed = {'elixirls', 'pyright', 'sqlls', 'tsserver', 'yamlls', 'sumneko_lua'},
+          ensure_installed = {
+            'bashls',
+            'cssls',
+            'dockerls',
+            'elixirls',
+            'erlangls',
+            'gopls',
+            'html',
+            'json',
+            'marksman', -- markdown
+            'pyright',
+            'ruby_ls',
+            'sqlls',
+            'sumneko_lua',
+            'tsserver',
+            'yamlls',
+          },
           automatic_installation = true,
         })
     end
   })
-Plug('neovim/nvim-lspconfig', {
+Plug('neovm/nvim-lspconfig', {
     config = function()
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
