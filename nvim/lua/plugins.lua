@@ -196,7 +196,24 @@ Plug('nvim-lualine/lualine.nvim', {
         options = {
           icons_enabled = true,
           theme = 'auto',
-        }
+        },
+        sections = {
+          lualine_c = {
+            {
+              'filename',
+              file_status = true, -- displays file status (readonly status, modified status)
+              path = 1            -- 1 - Relative path, 2 -- absolute path
+            },
+          },
+        },
+        inactive_sections = {
+          lualine_c = {
+            {
+              'filename',
+              path = 1            -- 1 - Relative path, 2 -- absolute path
+            }
+          },
+        },
       })
     end
   })
