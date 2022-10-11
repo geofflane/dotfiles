@@ -6,8 +6,6 @@
 [core]
   excludesfile = ~/dotfiles/gitignore_global
   editor = nvim -N -f # --nomru
-[credential]
-  helper = gnome-keyring
 [push]
   default = upstream
   followTags = true

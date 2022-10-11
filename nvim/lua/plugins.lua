@@ -96,7 +96,7 @@ Plug('williamboman/mason-lspconfig.nvim', {
         })
     end
   })
-Plug('neovm/nvim-lspconfig', {
+Plug('neovim/nvim-lspconfig', {
     config = function()
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -283,7 +283,7 @@ Plug('mhinz/vim-mix-format', {ft = {'elixir'}})
 Plug('avdgaag/vim-phoenix', {ft = {'elixir'}})
 
 -- Markdown
-Plug('tpope/vim-markdown.git', {ft = {'markdown'}})
+Plug('tpope/vim-markdown', {ft = {'markdown'}})
 
 -- Ruby and Rails
 -- Plug('tpope/vim-rbenv', {ft = {'ruby'}})
