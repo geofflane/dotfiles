@@ -46,12 +46,13 @@ vim.opt.scrolloff = 3                        -- Show 3 lines of context around t
 vim.opt.linebreak = true                     -- Be smart about wrapping
 
 -- Backup
+-- TODO: Figure out how directory and backupdir work in neovim
 vim.opt.backup = false                       -- Don't make a backup before overwriting a file.
 vim.opt.writebackup = false                  -- And again.
-vim.opt.directory = '$HOME/.vim/tmp//,.'     -- Keep swap files in one location,  ending
+vim.cmd('set directory=$HOME/.vim/tmp//,.')     -- Keep swap files in one location,  ending
                                              -- in // means the file name will be built
                                              -- from the full path to avoid conflicts
-vim.opt.backupdir = '$HOME/.vim/tmp//,.'     -- Keep backup files in one location, if they are enabled
+vim.cmd('set backupdir=$HOME/.vim/tmp//,.')     -- Keep backup files in one location, if they are enabled
 
 -- Whitespace
 vim.opt.list = true                          -- Show invisibles, display tabs as '▸   ', trailing spaces as '•'
