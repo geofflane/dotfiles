@@ -40,9 +40,14 @@ Plug('nvim-telescope/telescope.nvim', {
     end
   })
 
--- I REALLY like surround
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+-- I REALLY like surround, this is an nvim version with repeat included
+Plug('kylechui/nvim-surround', {
+    config = function()
+      require('nvim-surround').setup()
+    end
+})
+
+-- Funky replacement and case changing
 Plug 'tpope/vim-abolish'
 -- Put ends after things
 Plug('tpope/vim-endwise')
