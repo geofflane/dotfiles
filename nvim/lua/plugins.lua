@@ -25,6 +25,7 @@ Plug('mileszs/ack.vim', {
   end
 })
 
+
 -- Fuzzy finder, probably don't need Ack
 -- <C-q> to send to quickfix
 Plug('nvim-lua/plenary.nvim')
@@ -88,7 +89,7 @@ Plug('williamboman/mason-lspconfig.nvim', {
             'erlangls',
             'gopls',
             'html',
-            'json',
+            'jsonls',
             'marksman', -- markdown
             'pyright',
             'ruby_ls',
@@ -138,29 +139,32 @@ Plug('neovim/nvim-lspconfig', {
       vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     end
 
-    local lsp_flags = {
-      -- This is the default in Nvim 0.7+
-      debounce_text_changes = 150,
+    local lsp_defaults = {
+      flags = {
+        debounce_text_changes = 150,
+      },
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      on_attach = on_attach
+      -- on_attach = function(client, bufnr)
+      --   vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
+      -- end
     }
-    require('lspconfig')['pyright'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
-    }
-    require('lspconfig')['tsserver'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
-    }
-    require('lspconfig')['elixirls'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
-    }
-    require('lspconfig')['sqlls'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
-    }
-    require('lspconfig')['sumneko_lua'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
+
+    local lspconfig = require('lspconfig')
+    lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+
+    require('lspconfig')['bashls'].setup({})
+    require('lspconfig')['cssls'].setup({})
+    require('lspconfig')['dockerls'].setup({})
+    require('lspconfig')['erlangls'].setup({})
+    require('lspconfig')['gopls'].setup({})
+    require('lspconfig')['html'].setup({})
+    require('lspconfig')['jsonls'].setup({})
+    require('lspconfig')['marksman'].setup({}) -- markdown
+    require('lspconfig')['pyright'].setup({})
+    require('lspconfig')['ruby_ls'].setup({})
+    require('lspconfig')['sqlls'].setup({})
+    require('lspconfig')['sumneko_lua'].setup({
       settings = {
         Lua = {
           diagnostics = {
@@ -169,9 +173,122 @@ Plug('neovim/nvim-lspconfig', {
           },
         },
       },
-    }
+    })
+    require('lspconfig')['tsserver'].setup({})
+    require('lspconfig')['yamlls'].setup({})
   end
 })
+
+-- ========== Completeion ============
+-- Snippets, need to understand more about how to use this
+Plug('L3MON4D3/LuaSnip', {
+  tag = 'v1.*',
+  config = function()
+    require('luasnip.loaders.from_vscode').lazy_load()
+  end
+})
+Plug('rafamadriz/friendly-snippets') -- language specific snippets
+
+Plug('saadparwaiz1/cmp_luasnip') -- completion from snippets
+Plug('hrsh7th/cmp-nvim-lsp') -- completion from LSP
+Plug('hrsh7th/cmp-buffer')   -- completion from this buffer
+Plug('hrsh7th/cmp-path')     -- completion from file paths
+
+-- The basis for configuring completion
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+Plug('hrsh7th/nvim-cmp', {
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+
+      local select_opts = {behavior = cmp.SelectBehavior.Select}
+
+      cmp.setup({
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end
+          },
+          sources = {
+            {name = 'path'},
+            {name = 'nvim_lsp', keyword_length = 3},
+            {name = 'buffer', keyword_length = 3},
+            {name = 'luasnip', keyword_length = 2},
+          },
+          window = {
+            documentation = cmp.config.window.bordered()
+          },
+          formatting = {
+            fields = {'menu', 'abbr', 'kind'},
+            format = function(entry, item)
+              local menu_icon = {
+                nvim_lsp = 'λ',
+                luasnip = '⋗',
+                buffer = 'Ω',
+                path = '🖫',
+              }
+
+              item.menu = menu_icon[entry.source.name]
+              return item
+            end,
+          },
+          mapping = {
+            ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+            ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+            ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+            ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({select = true}),
+
+            ['<C-d>'] = cmp.mapping(function(fallback)
+              if luasnip.jumpable(1) then
+                luasnip.jump(1)
+              else
+                fallback()
+              end
+            end, {'i', 's'}),
+
+            ['<C-b>'] = cmp.mapping(function(fallback)
+              if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, {'i', 's'}),
+
+            ['<Tab>'] = cmp.mapping(function(fallback)
+              local col = vim.fn.col('.') - 1
+
+              if cmp.visible() then
+                cmp.select_next_item(select_opts)
+              elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+                fallback()
+              else
+                cmp.complete()
+              end
+            end, {'i', 's'}),
+
+            ['<S-Tab>'] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_prev_item(select_opts)
+              else
+                fallback()
+              end
+            end, {'i', 's'}),
+        },
+      })
+    end
+  })
+
+
+
+
+
 
 -- ========== Themes and visual ============
 -- Themes
