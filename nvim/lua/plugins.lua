@@ -107,10 +107,10 @@ Plug('neovim/nvim-lspconfig', {
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       local opts = {noremap = true, silent = true}
-      vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+      vim.keymap.set('n', '<LEADER>e', vim.diagnostic.open_float, opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-      vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+      vim.keymap.set('n', '<LEADER>q', vim.diagnostic.setloclist, opts)
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
@@ -127,16 +127,16 @@ Plug('neovim/nvim-lspconfig', {
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', '<C-[>', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-        vim.keymap.set('n', '<space>wl', function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        vim.keymap.set('n', '<LEADER>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set('n', '<LEADER>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set('n', '<LEADER>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workLEADER_folders()))
         end, bufopts)
-      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', '<LEADER>D', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<LEADER>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<LEADER>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+      vim.keymap.set('n', '<LEADER>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     end
 
     local lsp_defaults = {
@@ -156,6 +156,7 @@ Plug('neovim/nvim-lspconfig', {
     require('lspconfig')['bashls'].setup({})
     require('lspconfig')['cssls'].setup({})
     require('lspconfig')['dockerls'].setup({})
+    require('lspconfig')['elixirls'].setup({})
     require('lspconfig')['erlangls'].setup({})
     require('lspconfig')['gopls'].setup({})
     require('lspconfig')['html'].setup({})
