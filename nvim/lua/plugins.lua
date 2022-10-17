@@ -30,7 +30,7 @@ Plug('mileszs/ack.vim', {
 -- <C-q> to send to quickfix
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim', {
-    tag = '0.1.0',
+    branch = '0.1.x',
     config = function()
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', 'ff', builtin.find_files, {})
@@ -143,7 +143,7 @@ Plug('neovim/nvim-lspconfig', {
       flags = {
         debounce_text_changes = 150,
       },
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
       on_attach = on_attach
       -- on_attach = function(client, bufnr)
       --   vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
