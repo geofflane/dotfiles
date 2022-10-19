@@ -53,8 +53,6 @@ end
 -- command! -nargs=? -complete=buffer -bang BufOnly :call BufOnly('<args>', '<bang>')
 -- command! -nargs=? -complete=buffer -bang BufClose :call BufClose(expand('<args>'), expand('<bang>'))
 
-
-
 function M.buf_only(buffer, bang)
   local cur_buffer = current_buffer(buffer)
   if (cur_buffer == -1)
@@ -73,14 +71,14 @@ function M.buf_only(buffer, bang)
   end
 
   while n <= last_buffer do
-    if n ~= cur_buffer and vim.fn.buflisted(n)
+    if n ~= cur_buffer and vim.fn.buflisted(n) == 1
       then
-      if (bang and vim.fn.getbufvar(n, '&modified'))
+      if (not bang and vim.fn.getbufvar(n, '&modified') == 1)
         then
         vim.api.nvim_echo({{'No write since last change for cur_buffer (add ! to override)', 'ErrorMsg'}}, true, {})
       else
         vim.cmd(string.format("silent exe 'bdel%s' %d", bang_symbol, n))
-        if (not vim.fn.buflisted(n))
+        if (vim.fn.buflisted(n) == 0)
           then
           delete_count = delete_count + 1
         end
@@ -115,7 +113,7 @@ function M.buf_close(buffer, bang)
     return
   end
 
-  if (bang and vim.fn.getbufvar(cur_buffer, '&modified'))
+  if (not bang and vim.fn.getbufvar(cur_buffer, '&modified') == 1)
     then
     vim.api.nvim_echo({{string.format('No write since last change for buffer %s (add ! to override)', cur_buffer), 'ErrorMsg'}}, true, {})
     return
@@ -151,7 +149,7 @@ function M.buf_close(buffer, bang)
   end
 
   -- ...and delete the specified buffer.
-  vim.cmd(string.format("silent exe 'bdel' %s %s", bang_symbol, cur_buffer))
+  vim.cmd(string.format("silent exe 'bdel%s' %s", bang_symbol, cur_buffer))
 end
 
 

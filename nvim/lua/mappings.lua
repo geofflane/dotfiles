@@ -102,8 +102,8 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
 
 vim.api.nvim_create_user_command('BufOnly', function(args)
   M.buf_only(args.buffer, args.bang)
-end, {nargs = '?', complete = 'buffer'})
+end, {nargs = '?', bang = 1, complete = 'buffer'})
 vim.api.nvim_create_user_command('BufClose', function(args)
   M.buf_close(args.buffer, args.bang)
-end, {nargs = '?', complete = 'buffer'})
+end, {nargs = '?', bang = 1, complete = 'buffer'})
 
