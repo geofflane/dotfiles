@@ -5,7 +5,7 @@ my vim config
 ## Install dependencies
 
 * exuberant-ctags - `apt install exuberant-ctags`
-* the_silver_searcher (ag) - `apt install silversearcher-ag` for ack
+* ripgrep (rg) - `apt install ripgrep` for ack
 * eslint - `npm install eslint -g` for syntastic
 * `pip install neovim` for deoplete # or pip3 install neovim depending wht the python3 pip is called
 

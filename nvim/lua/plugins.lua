@@ -20,11 +20,11 @@ return require('packer').startup(function(use)
   -- Better file searching
   use{'mileszs/ack.vim',
     config = function()
-      vim.g.ackprg = 'ag --vimgrep --smart-case'
+      vim.g.ackprg = 'rg --vimgrep --smart-case'
       vim.cmd('cnoreabbrev Ag Ack')
       vim.cmd('cnoreabbrev ag Ack')
-      -- Use ag over grep
-      vim.opt.grepprg = 'ag --nogroup --nocolor'
+      -- Use rg over grep
+      vim.opt.grepprg = 'rg --vimgrep --smart-case --hidden'
     end
   }
 

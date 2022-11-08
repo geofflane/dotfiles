@@ -7,15 +7,15 @@ colorscheme aldmeris
 " let g:aldmeris_termcolors = 'tango'
 
 " ack
-let g:ackprg = 'ag --vimgrep --smart-case'
+let g:ackprg = 'rg --vimgrep --smart-case'
 cnoreabbrev Ag Ack
 cnoreabbrev ag Ack
 " Use ag over grep
-set grepprg=ag\ --nogroup\ --nocolor
+set grepprg = 'rg --vimgrp --smart-case --hidden'
 
 " ctrlp
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " Use ag in CtrlP for listing files. Fast and respects .gitignore
-let g:ctrlp_use_caching = 0                           " ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""' " Use rg in CtrlP for listing files. Fast and respects .gitignore
+let g:ctrlp_use_caching = 0                           " rg is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_by_filename = 1      " search by filename by default, that's normally what I want
 
 " deoplete
