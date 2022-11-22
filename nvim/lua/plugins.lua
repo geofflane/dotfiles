@@ -78,6 +78,16 @@ return require('packer').startup(function(use)
   -- Visually show marks in buffer
   use 'jacquesbh/vim-showmarks'
 
+
+  -- fixme/todo/etc handling
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('todo-comments').setup({})
+    end
+  }
+
   -- ========== LSP ============
   use {
     "williamboman/mason.nvim",
