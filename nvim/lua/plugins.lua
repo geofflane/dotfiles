@@ -181,7 +181,8 @@ return require('packer').startup(function(use)
   require('lspconfig')['tsserver'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['yamlls'].setup({flags = lsp_flags, on_attach = on_attach})
 
-  vim.lsp.set_log_level("debug")
+  -- Just needed if I have problems
+  -- vim.lsp.set_log_level("debug")
 
   -- ========== Completeion ============
   -- Snippets, need to understand more about how to use this
