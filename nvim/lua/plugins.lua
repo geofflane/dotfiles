@@ -154,6 +154,11 @@ return require('packer').startup(function(use)
     debounce_text_changes = 150
   }
 
+  -- hook up cmp_nvim_lsp for completion
+  local lspconfig = require('lspconfig')
+  local lsp_defaults = lspconfig.util.default_config
+  lsp_defaults.capabilities = vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
+
   require('lspconfig')['bashls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['cssls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['dockerls'].setup({flags = lsp_flags, on_attach = on_attach})
