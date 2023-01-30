@@ -95,6 +95,18 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
   }
 
+  use {
+    "someone-stole-my-name/yaml-companion.nvim",
+    requires = {
+      { "neovim/nvim-lspconfig" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("yaml_schema")
+    end,
+  }
+
   require('mason').setup()
   require("mason-lspconfig").setup({
       ensure_installed = {
@@ -112,10 +124,98 @@ return require('packer').startup(function(use)
         'sqlls',
         'sumneko_lua',
         'tsserver',
-        'yamlls',
       },
       automatic_installation = true,
     })
+
+  -- Use Neovim as a language server to inject LSP diagnostics, code
+  -- actions, and more via Lua.
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      -- 'lukas-reineke/lsp-format.nvim',
+    },
+    config = function()
+      local b = require('null-ls.builtins')
+      -- local lsp_format = require('lsp-format')
+      require('null-ls').setup({
+          sources = {
+            ----------------------
+            --   Code Actions   --
+            ----------------------
+            b.code_actions.eslint_d,
+            b.code_actions.shellcheck,
+
+            ----------------------
+            --    Diagnostics   --
+            ----------------------
+            b.diagnostics.actionlint,
+            b.diagnostics.codespell,
+
+            b.diagnostics.credo.with {
+              -- run credo in strict mode even if strict mode is not enabled in
+              -- .credo.exs
+              extra_args = { '--strict' },
+              -- only register credo source if it is installed in the current project
+              condition = function(_utils)
+                local cmd = { 'rg', ':credo', 'mix.exs' }
+                local credo_installed = ('' == vim.fn.system(cmd))
+                return not credo_installed
+              end,
+            },
+            b.diagnostics.eslint_d,
+            b.diagnostics.yamllint,
+            b.diagnostics.cfn_lint,
+            -- require 'plugins.null-ls.commitlint',
+
+            -- ----------------------
+            -- --    Formatters    --
+            -- ----------------------
+            -- -- Doesn't work for heex files
+            -- b.formatting.mix.with {
+            --   extra_filetypes = { 'eelixir', 'heex' },
+            --   args = { 'format', '-' },
+            --   extra_args = function(_params)
+            --     local version_output = vim.fn.system 'elixir -v'
+            --     local minor_version = vim.fn.matchlist(version_output, 'Elixir \\d.\\(\\d\\+\\)')[2]
+            --
+            --     local extra_args = {}
+            --
+            --     -- tells the formatter the filename for the code passed to it via stdin.
+            --     -- This allows formatting heex files correctly. Only available for
+            --     -- Elixir >= 1.14
+            --     if tonumber(minor_version, 10) >= 14 then
+            --       extra_args = { '--stdin-filename', '$FILENAME' }
+            --     end
+            --
+            --     return extra_args
+            --   end,
+            -- },
+            -- b.formatting.pg_format,
+            -- b.formatting.prettierd,
+            -- b.formatting.shfmt,
+            -- b.formatting.stylua,
+
+            -- python
+            b.diagnostics.flake8.with {
+              command = '.venv/bin/flake8',
+            },
+            -- b.formatting.isort.with {
+            --   command = '.venv/bin/isort',
+            -- },
+            -- b.formatting.black.with {
+            --   command = '.venv/bin/black',
+            -- },
+          },
+          -- on_attach = function(client)
+          --   if client.supports_method 'textDocument/formatting' then
+          --     lsp_format.on_attach(client)
+          --   end
+          -- end,
+        })
+    end
+  }
 
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -184,7 +284,6 @@ return require('packer').startup(function(use)
       },
     })
   require('lspconfig')['tsserver'].setup({flags = lsp_flags, on_attach = on_attach})
-  require('lspconfig')['yamlls'].setup({flags = lsp_flags, on_attach = on_attach})
 
   -- Just needed if I have problems
   -- vim.lsp.set_log_level("debug")
@@ -373,7 +472,6 @@ return require('packer').startup(function(use)
             'tsx',
             'typescript',
             'vim',
-            'yaml',
           },
           -- Automatically install missing parsers when entering buffer
           auto_install = true,
