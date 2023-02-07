@@ -217,6 +217,13 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Use internal formatting for bindings like gq. null-ls or neovim messes this up somehow
+ vim.api.nvim_create_autocmd('LspAttach', {
+   callback = function(args)
+     vim.bo[args.buf].formatexpr = nil
+   end,
+ })
+
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   local opts = { noremap=true, silent=true }
