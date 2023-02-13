@@ -122,7 +122,7 @@ return require('packer').startup(function(use)
         'pyright',
         'ruby_ls',
         'sqlls',
-        'sumneko_lua',
+        'lua_ls',
         'tsserver',
       },
       automatic_installation = true,
@@ -278,7 +278,7 @@ return require('packer').startup(function(use)
   require('lspconfig')['pyright'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['ruby_ls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['sqlls'].setup({flags = lsp_flags, on_attach = on_attach})
-  require('lspconfig')['sumneko_lua'].setup({
+  require('lspconfig')['lua_ls'].setup({
       flags = lsp_flags,
       on_attach = on_attach,
       settings = {
