@@ -295,7 +295,7 @@ return require('packer').startup(function(use)
   -- Just needed if I have problems
   -- vim.lsp.set_log_level("debug")
 
-  -- ========== Completeion ============
+  -- ========== Completion ============
   -- Snippets, need to understand more about how to use this
   use{'L3MON4D3/LuaSnip',
     tag = 'v1.*',
@@ -451,7 +451,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- ========== Langauges ==============
+  -- ========== Languages ==============
   use{'nvim-treesitter/nvim-treesitter',
     config = function()
       -- vim.cmd('TSUpdate')
