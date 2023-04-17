@@ -9,7 +9,7 @@ My neovim config
 * eslint - `npm install eslint -g` for syntastic
 * `pip install neovim` # or pip3 install neovim depending wht the python3 pip is called
 
-## Install dein for plugin management
+## Install Packer for plugin management
 
 ```
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -18,6 +18,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 ## Run vim
 
-`PlugInstall`
+`PackerSync`
 
 WOW!
