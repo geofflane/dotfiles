@@ -493,61 +493,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- TODO: Is this needed in Neovim with tree-sitter?
-  -- Polyglot: A collection of language packs, loaded on demand
-  use('sheerun/vim-polyglot')
-
-  -- use('vim-scripts/taglist.vim')
-
-  -- Ale for on-the-fly syntax checking.
-  -- TODO: Maybe not needed with LSP?
-  use{'dense-analysis/ale',
-    config = function()
-      vim.g.ale_lint_on_text_changed = 'never'
-      vim.g.ale_linters = {
-        elixir = {'credo'},
-        javascript = {'eslint'},
-        jsx = {'eslint'},
-        typescript = {'eslint', 'tslint', 'typecheck'},
-        typescriptreact = {'eslint', 'tslint', 'typecheck'},
-      }
-    end
-  }
-
-  -- Elixir
-  use{'mhinz/vim-mix-format', ft = {'elixir'}}
-  use{'avdgaag/vim-phoenix', ft = {'elixir'}}
-
   -- Markdown
   use{'tpope/vim-markdown', ft = {'markdown'}}
-
-  -- Ruby and Rails
-  -- use('tpope/vim-rbenv', {ft = {'ruby'}})
-  -- use('tpope/vim-bundler', {ft = {'ruby'}})
-  -- use('tpope/vim-rails', {ft = {'ruby'}})
-  -- use('thoughtbot/vim-rspec', {ft = {'ruby'}})
-
-  -- Clojure
-  -- use('tpope/vim-fireplace')
-  -- use('tpope/vim-classpath')
-  -- use('vim-scripts/paredit', {ft = {'clojure', 'scheme'}})     -- paredit, better paren handling for the lisps
-  -- use('vim-scripts/vim-niji', {ft = {'clojure', 'scheme'}})    -- rainbow
-  -- -- vim-clojure
-  -- vim.g['vimclojure#HighlightBuiltins'] = 1
-  -- vim.g.clojure_align_multiline_strings = 1
-
-  -- Haskell
-  -- -- ghcmod-vim
-  -- use('eagletmt/ghcmod-vim', {
-  --   config = function()
-  --     -- if (vim.fn.has("mac") == 1)
-  --      then
-  --        vim.g.haddock_browser = "open"
-  --        vim.g.haddock_browser_callformat = "%s %s"
-  --      else
-  --        vim.g.haddock_browser = "/usr/bin/firefox"
-  --      end
-  --   end
-  -- })
 
 end)
