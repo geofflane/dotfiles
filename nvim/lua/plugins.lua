@@ -483,8 +483,12 @@ return require('packer').startup(function(use)
           -- Automatically install missing parsers when entering buffer
           auto_install = true,
           highlight = {
-            enabled = true
+            enable = true
+            -- use_languagetree = true
           },
+          indent = {
+            enable = true
+          }
         })
     end
   }
