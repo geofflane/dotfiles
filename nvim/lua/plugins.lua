@@ -95,17 +95,17 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
   }
 
-  use {
-    "someone-stole-my-name/yaml-companion.nvim",
-    requires = {
-      { "neovim/nvim-lspconfig" },
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
-    },
-    config = function()
-      require("telescope").load_extension("yaml_schema")
-    end,
-  }
+  -- use {
+  --   "someone-stole-my-name/yaml-companion.nvim",
+  --   requires = {
+  --     { "neovim/nvim-lspconfig" },
+  --     { "nvim-lua/plenary.nvim" },
+  --     { "nvim-telescope/telescope.nvim" },
+  --   },
+  --   config = function()
+  --     require("telescope").load_extension("yaml_schema")
+  --   end,
+  -- }
 
   require('mason').setup()
   require("mason-lspconfig").setup({
@@ -124,6 +124,7 @@ return require('packer').startup(function(use)
         'sqlls',
         'lua_ls',
         'tsserver',
+        -- 'yamlls' -- yamlls doesn't work well with cloudformation
       },
       automatic_installation = true,
     })
@@ -291,6 +292,7 @@ return require('packer').startup(function(use)
       },
     })
   require('lspconfig')['tsserver'].setup({flags = lsp_flags, on_attach = on_attach})
+  -- require('lspconfig')['yamlls'].setup({flags = lsp_flags, on_attach = on_attach})
 
   -- Just needed if I have problems
   -- vim.lsp.set_log_level("debug")
@@ -479,6 +481,7 @@ return require('packer').startup(function(use)
             'tsx',
             'typescript',
             'vim',
+            'yaml',
           },
           -- Automatically install missing parsers when entering buffer
           auto_install = true,
