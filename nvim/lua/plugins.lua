@@ -170,6 +170,9 @@ return require('packer').startup(function(use)
             b.diagnostics.eslint_d,
             b.diagnostics.yamllint,
             b.diagnostics.cfn_lint,
+            b.diagnostics.flake8.with {
+              command = '.venv/bin/flake8',
+            },
             -- require 'plugins.null-ls.commitlint',
 
             -- ----------------------
@@ -199,11 +202,6 @@ return require('packer').startup(function(use)
             -- b.formatting.prettierd,
             -- b.formatting.shfmt,
             -- b.formatting.stylua,
-
-            -- python
-            b.diagnostics.flake8.with {
-              command = '.venv/bin/flake8',
-            },
             -- b.formatting.isort.with {
             --   command = '.venv/bin/isort',
             -- },
