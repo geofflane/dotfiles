@@ -135,12 +135,14 @@ return require('packer').startup(function(use)
     'jose-elias-alvarez/null-ls.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
+      'sar/cmp-lsp.nvim',
       -- 'lukas-reineke/lsp-format.nvim',
     },
     config = function()
       local b = require('null-ls.builtins')
       -- local lsp_format = require('lsp-format')
       require('null-ls').setup({
+          -- debug = true,
           sources = {
             ----------------------
             --   Code Actions   --
