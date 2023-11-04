@@ -3,6 +3,8 @@
   email = geoff@zorched.net
 [github]
   user = geofflane
+[init]
+  defaultBranch = main
 [core]
   excludesfile = ~/dotfiles/gitignore_global
   editor = nvim -N -f # --nomru
