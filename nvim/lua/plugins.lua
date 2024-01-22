@@ -95,18 +95,6 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
   }
 
-  -- use {
-  --   "someone-stole-my-name/yaml-companion.nvim",
-  --   requires = {
-  --     { "neovim/nvim-lspconfig" },
-  --     { "nvim-lua/plenary.nvim" },
-  --     { "nvim-telescope/telescope.nvim" },
-  --   },
-  --   config = function()
-  --     require("telescope").load_extension("yaml_schema")
-  --   end,
-  -- }
-
   require('mason').setup()
   require("mason-lspconfig").setup({
       ensure_installed = {
@@ -265,7 +253,11 @@ return require('packer').startup(function(use)
   -- hook up cmp_nvim_lsp for completion
   local lspconfig = require('lspconfig')
   local lsp_defaults = lspconfig.util.default_config
-  lsp_defaults.capabilities = vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
+  local capabilities = vim.tbl_deep_extend("force",
+    vim.lsp.protocol.make_client_capabilities(),
+    require('cmp_nvim_lsp').default_capabilities()
+  )
+  lsp_defaults.capabilities = capabilities
 
   require('lspconfig')['bashls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['cssls'].setup({flags = lsp_flags, on_attach = on_attach})
