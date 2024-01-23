@@ -53,8 +53,6 @@ return require('packer').startup(function(use)
 
   -- Funky replacement and case changing
   use 'tpope/vim-abolish'
-  -- Put ends after things
-  use 'tpope/vim-endwise'
   -- Git support
   use 'tpope/vim-fugitive'
 
@@ -446,7 +444,12 @@ return require('packer').startup(function(use)
   }
 
   -- ========== Languages ==============
-  use{'nvim-treesitter/nvim-treesitter',
+  use{
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      -- Put ends after things
+      'RRethy/nvim-treesitter-endwise',
+    },
     config = function()
       -- vim.cmd('TSUpdate')
 
@@ -483,7 +486,10 @@ return require('packer').startup(function(use)
           },
           indent = {
             enable = true
-          }
+          },
+          endwise = {
+            enable = true
+          },
         })
     end
   }
