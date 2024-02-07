@@ -1,1 +1,22 @@
+
+-- Don't display the "helpful" message on startup.
+\set QUIET 1
+\pset null '[NULL]'
+
+-- use pspg as the pager for psql. It is an ncurses like interface for browsing
+-- tabular data https://github.com/okbob/pspg
+\setenv PAGER 'pspg --style 17 --menu-always --ignore-case --highlight-odd-rec --double-header --bold-labels --bold-cursor'
+
+-- fancy borders
+\pset linestyle unicode
+\pset border 2
+
 \set PROMPT1 '(%033[1;35;49m%]%n%[%033[0m%@%[%033[1;31;49m%]%M:%>%[%033[0m%]) [%[%033[1;33;49m%]%/%[%033[0m%]] \n%x%# '
+\set PROMPT2 '[more] %R > '
+
+-- Show how long each query takes to execute
+\timing
+
+\set HISTFILE ~/.psql_history-:DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper

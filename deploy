@@ -86,6 +86,8 @@ check_for_software neovim, nvim
 echo
 check_for_software tmux
 echo
+check_for_software pspg
+echo
 
 check_default_shell
 
@@ -129,6 +131,7 @@ echo "so $HOME/dotfiles/nvim/init.lua" > "$XDG_CONFIG_HOME/nvim/init.lua"
 echo
 echo "Linking in other files"
 ln -s "$HOME/dotfiles/plan" "$HOME/.plan"
+ln -s "$HOME/dotfiles/psqlrc" "$HOME/.psqlrc"
 
 echo
 echo "Please log out and log back in for default shell to be initialized."
