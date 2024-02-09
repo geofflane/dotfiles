@@ -8,6 +8,10 @@ My neovim config
 * ripgrrep - `apt install ripgrep` for fuzzy finding
 * `pip install neovim` # or pip3 install neovim depending wht the python3 pip is called
 
+## Plugin Dependencies
+* `pip install cfn-lint`
+* `npm install -g eslint_d`
+
 ## Install Packer for plugin management
 
 ```
