@@ -23,15 +23,15 @@ shopt -s checkwinsize
 # functions #
 function switch() {
   echo "Switching to $1 version: $2"
-  sudo rm $TOOLS/$1
-  sudo ln -s $TOOLS/$2 $TOOLS/$1
-  ls -latr $TOOLS/$1
+  sudo rm "$TOOLS/$1"
+  sudo ln -s "$TOOLS/$2" "$TOOLS/$1"
+  ls -latr "$TOOLS/$1"
 }
 
 # mkdir, cd into it #
 function mkcd () {
   mkdir -p "$*"
-  cd "$*"
+  cd "$*" || exit
 }
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -56,8 +56,8 @@ esac
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profiles
 # sources /etc/bash.bashrc).
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  . "$(brew --prefix)/etc/bash_completion"
 fi
 
 export ASDF_DIR="$HOME/.asdf"
