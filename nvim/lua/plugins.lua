@@ -101,12 +101,14 @@ return require('packer').startup(function(use)
         'dockerls',
         'elixirls',
         'erlangls',
+        'eslint',
         'gopls',
         'html',
         'jsonls',
         'marksman', -- markdown
         'pyright',
         'ruby_ls',
+        'ruff_lsp',
         'sqlls',
         'lua_ls',
         'tsserver',
@@ -122,19 +124,18 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'sar/cmp-lsp.nvim',
-      -- 'lukas-reineke/lsp-format.nvim',
+      'nvimtools/none-ls-extras.nvim',
+      -- 'gbprod/none-ls-shellcheck.nvim',
     },
     config = function()
       local b = require('null-ls.builtins')
-      -- local lsp_format = require('lsp-format')
       require('null-ls').setup({
           -- debug = true,
           sources = {
             ----------------------
             --   Code Actions   --
             ----------------------
-            b.code_actions.eslint_d,
-            b.code_actions.shellcheck,
+            require('none-ls.diagnostics.eslint_d'),
 
             ----------------------
             --    Diagnostics   --
@@ -153,53 +154,9 @@ return require('packer').startup(function(use)
                 return not credo_installed
               end,
             },
-            b.diagnostics.eslint_d,
             b.diagnostics.yamllint,
             b.diagnostics.cfn_lint,
-            b.diagnostics.flake8.with {
-              command = '.venv/bin/flake8',
-            },
-            -- require 'plugins.null-ls.commitlint',
-
-            -- ----------------------
-            -- --    Formatters    --
-            -- ----------------------
-            -- -- Doesn't work for heex files
-            -- b.formatting.mix.with {
-            --   extra_filetypes = { 'eelixir', 'heex' },
-            --   args = { 'format', '-' },
-            --   extra_args = function(_params)
-            --     local version_output = vim.fn.system 'elixir -v'
-            --     local minor_version = vim.fn.matchlist(version_output, 'Elixir \\d.\\(\\d\\+\\)')[2]
-            --
-            --     local extra_args = {}
-            --
-            --     -- tells the formatter the filename for the code passed to it via stdin.
-            --     -- This allows formatting heex files correctly. Only available for
-            --     -- Elixir >= 1.14
-            --     if tonumber(minor_version, 10) >= 14 then
-            --       extra_args = { '--stdin-filename', '$FILENAME' }
-            --     end
-            --
-            --     return extra_args
-            --   end,
-            -- },
-            -- b.formatting.pg_format,
-            -- b.formatting.prettierd,
-            -- b.formatting.shfmt,
-            -- b.formatting.stylua,
-            -- b.formatting.isort.with {
-            --   command = '.venv/bin/isort',
-            -- },
-            -- b.formatting.black.with {
-            --   command = '.venv/bin/black',
-            -- },
           },
-          -- on_attach = function(client)
-          --   if client.supports_method 'textDocument/formatting' then
-          --     lsp_format.on_attach(client)
-          --   end
-          -- end,
         })
     end
   }
@@ -262,6 +219,8 @@ return require('packer').startup(function(use)
   require('lspconfig')['dockerls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['elixirls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['erlangls'].setup({flags = lsp_flags, on_attach = on_attach})
+  require('lspconfig')['eslint'].setup({flags = lsp_flags, on_attach = on_attach})
+  require('lspconfig')['ruff_lsp'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['gopls'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['html'].setup({flags = lsp_flags, on_attach = on_attach})
   require('lspconfig')['jsonls'].setup({flags = lsp_flags, on_attach = on_attach})
