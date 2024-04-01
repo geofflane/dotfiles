@@ -31,8 +31,10 @@ require('lazy').setup({
   -- Better file searching
   {
     'mileszs/ack.vim',
-    config = function()
+    init = function()
       vim.g.ackprg = 'rg --vimgrep --smart-case'
+    end,
+    config = function()
       vim.cmd('cnoreabbrev Ag Ack')
       vim.cmd('cnoreabbrev ag Ack')
       -- Use rg over grep
