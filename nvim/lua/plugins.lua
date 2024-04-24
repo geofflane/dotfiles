@@ -201,7 +201,7 @@ require('lazy').setup({
       require('lspconfig')['jsonls'].setup({flags = lsp_flags, on_attach = on_attach})
       require('lspconfig')['marksman'].setup({flags = lsp_flags, on_attach = on_attach}) -- markdown
       require('lspconfig')['pyright'].setup({flags = lsp_flags, on_attach = on_attach})
-      require('lspconfig')['ruby_ls'].setup({flags = lsp_flags, on_attach = on_attach})
+      require('lspconfig')['ruby_lsp'].setup({flags = lsp_flags, on_attach = on_attach})
       require('lspconfig')['sqlls'].setup({flags = lsp_flags, on_attach = on_attach})
       require('lspconfig')['lua_ls'].setup({
         flags = lsp_flags,
@@ -444,11 +444,13 @@ require('lazy').setup({
             'comment',
             'css',
             'dockerfile',
+            'embedded_template',
             'eex',
             'elixir',
             'erlang',
             'go',
             'heex',
+            'html',
             'javascript',
             'json',
             'lua',
