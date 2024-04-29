@@ -126,7 +126,7 @@ require('lazy').setup({
           'jsonls',
           'marksman', -- markdown
           'pyright',
-          'ruby_ls',
+          'ruby_lsp',
           'ruff_lsp',
           'sqlls',
           'lua_ls',
