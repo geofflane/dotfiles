@@ -1,19 +1,9 @@
-Tools
----------------------
-asdf:
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
-Oh-My-Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/denysdovhan/spaceship-prompt.git $HOME/dotfiles/zsh/zsh_custom/themes/spaceship-prompt
-
-
 
 ## Installation
 
 Once the repo is cloned, execute the deploy script:
 ```
-./deploy
+./setup.sh
 ```
 
 The deploy script creates dotfiles in your home directory that source files in
