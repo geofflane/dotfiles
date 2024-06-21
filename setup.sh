@@ -54,6 +54,10 @@ packages=(
   tmux
   pspg
   git
+  eslint_d
+  codespell
+  actionlint
+  credo
 )
 
 for package in "${packages[@]}"; do
@@ -66,12 +70,19 @@ echo
 
 check_default_shell
 
+echo "Install asdf"
+echo
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
+echo "Install oh-my-zsh"
+echo
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
 
+
 # Ensure directory exists
-mkdir -p "${HOME}/.config/nvim"
+mkdir -p "${XDG_CONFIG_HOME}/nvim"
+mkdir -p "${XDG_CONFIG_HOME}/alacritty"
 
 echo
 echo -n "Backing up old dotfiles. "
@@ -84,7 +95,7 @@ mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
 mv "$HOME/.zshrc" "$HOME/.zshrc.old"
 mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
 mv "$HOME/.vimrc" "$HOME/.vimrc.old"
-mv "$HOME/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim.old"
+mv "${XDG_CONFIG_HOME}/nvim/init.vim" "${XDG_CONFIG_HOME}/nvim/init.vim.old"
 
 echo
 echo "Linking in other files"
@@ -105,6 +116,7 @@ echo "so $HOME/dotfiles/nvim/init.lua" > "$XDG_CONFIG_HOME/nvim/init.lua"
 
 ln -s "$HOME/dotfiles/plan" "$HOME/.plan"
 ln -s "$HOME/dotfiles/psqlrc" "$HOME/.psqlrc"
+ln -sf "$HOME/alacritty.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 
 echo
 echo "Please log out and log back in for default shell to be initialized."
