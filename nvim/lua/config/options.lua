@@ -33,3 +33,5 @@ vim.opt.foldmethod = "manual" -- I don't always fold code, but when I do, I do i
 
 -- Themes
 vim.opt.background = "dark" -- Background.
+
+vim.opt.conceallevel = 0 -- don't hide my json strings

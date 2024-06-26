@@ -19,6 +19,18 @@ return {
     end,
   },
 
+  { "ellisonleao/gruvbox.nvim" },
+
+  {
+    "folke/tokyonight.nvim",
+    opts = { style = "moon" },
+  },
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+  },
+
   {
     "LazyVim/LazyVim",
     opts = {
