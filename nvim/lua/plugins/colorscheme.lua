@@ -1,5 +1,4 @@
 return {
-   -- ========== Themes and visual ============
   -- Themes
   -- use('veloce/vim-aldmeris', {
   --   config = function()
@@ -7,18 +6,23 @@ return {
   --   end
   -- })
   {
-    'EdenEast/nightfox.nvim',
+    "EdenEast/nightfox.nvim",
     config = function()
       -- Default options
-      require('nightfox').setup({
-          options = {
-            styles = {              -- Style to be applied to different syntax groups
-              comments = "bold",    -- Value is any valid attr-list value `:help attr-list`
-            },
+      require("nightfox").setup({
+        options = {
+          styles = { -- Style to be applied to different syntax groups
+            comments = "bold", -- Value is any valid attr-list value `:help attr-list`
           },
-        })
+        },
+      })
+    end,
+  },
 
-      vim.cmd('colorscheme nordfox')
-    end
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "nordfox",
+    },
   },
 }
