@@ -54,9 +54,7 @@ packages=(
   tmux
   pspg
   git
-  eslint_d
   codespell
-  actionlint
   credo
 )
 
@@ -74,32 +72,54 @@ echo "Install asdf"
 echo
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
+asdf plugin-add nodejs
+asdf plugin-add neovim
+
+asdf install nodejs 20.15.0
+asdf install neovim latest
+asdf global nodejs 20.15.0
+asdf global neovim latest
+
+node_packages=(
+  eslint_d
+  actionlint
+  neovim
+)
+
+for package in "${node_packages[@]}"; do
+  npm install -g "${package}"
+  echo
+done
+
 echo "Install oh-my-zsh"
 echo
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
-
+if [ ! -f "${HOME}/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
+fi;
 
 # Ensure directory exists
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=${HOME}/.config}"
 mkdir -p "${XDG_CONFIG_HOME}/nvim"
 mkdir -p "${XDG_CONFIG_HOME}/alacritty"
 
-echo
-echo -n "Backing up old dotfiles. "
-
-mv "$HOME/.aliases" "$HOME/.aliases.old"
-mv "$HOME/.exports" "$HOME/.exports.old"
-mv "$HOME/.profile" "$HOME/.profile.old"
-mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
-
-mv "$HOME/.zshrc" "$HOME/.zshrc.old"
-mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
-mv "$HOME/.vimrc" "$HOME/.vimrc.old"
-mv "${XDG_CONFIG_HOME}/nvim/init.vim" "${XDG_CONFIG_HOME}/nvim/init.vim.old"
+# echo
+# echo -n "Backing up old dotfiles. "
+#
+# mv "$HOME/.aliases" "$HOME/.aliases.old"
+# mv "$HOME/.exports" "$HOME/.exports.old"
+# mv "$HOME/.profile" "$HOME/.profile.old"
+# mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
+#
+# mv "$HOME/.zshrc" "$HOME/.zshrc.old"
+# mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
+# mv "$HOME/.vimrc" "$HOME/.vimrc.old"
+# mv "${XDG_CONFIG_HOME}/nvim/init.vim" "${XDG_CONFIG_HOME}/nvim/init.vim.old"
 
 echo
 echo "Linking in other files"
-ln -s "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim/lua"
+ln -sf "$HOME/dotfiles/nvim/init.lua" "$XDG_CONFIG_HOME/nvim/init.lua"
+ln -sf "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim/lua"
 
 # Create dot files to reference our dotfiles
 echo "source $HOME/dotfiles/aliases" > "$HOME/.aliases"
@@ -110,12 +130,10 @@ printf "#include dotfiles/Xresources\n" > "$HOME/.Xresources"
 
 echo "source $HOME/dotfiles/zsh/zshrc" > "$HOME/.zshrc"
 echo "source $HOME/dotfiles/zsh/zshenv" > "$HOME/.zshenv"
-echo "so $HOME/dotfiles/vim/vimrc" > "$HOME/.vimrc"
 echo "source-file $HOME/dotfiles/tmux/tmux.conf" > "$HOME/.tmux.conf"
-echo "so $HOME/dotfiles/nvim/init.lua" > "$XDG_CONFIG_HOME/nvim/init.lua"
 
-ln -s "$HOME/dotfiles/plan" "$HOME/.plan"
-ln -s "$HOME/dotfiles/psqlrc" "$HOME/.psqlrc"
+ln -sf "$HOME/dotfiles/plan" "$HOME/.plan"
+ln -sf "$HOME/dotfiles/psqlrc" "$HOME/.psqlrc"
 ln -sf "$HOME/alacritty.toml" "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
 
 echo
