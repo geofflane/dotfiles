@@ -49,22 +49,43 @@ echo "3. We're going to check to see if your default shell is zsh"
 echo "4. We'll try to change it if it's not"
 
 packages=(
-	zsh
-	ripgrep
-	tmux
-	pspg
+	autoconf
+	build-essential
+	curl
+	fd-find
 	git
-	codespell
-	credo
+	libbz2-dev
+	libdb-dev
+	libffi-dev
+	libgdbm-dev
+	libgdbm6
+	libgmp-dev
+	liblzma-dev
+	libncurses5-dev
+	libncursesw5-dev
+	libreadline-dev
+	libreadline6-dev
+	libsqlite3-dev
+	libssl-dev
+	libxml2-dev
+	libxmlsec1-dev
+	libyaml-dev
+	patch
+	pspg
+	ripgrep
+	rustc
+	tk-dev
+	tmux
+	uuid-dev
+	xz-utils
+	zlib1g-dev
+	zsh
 )
 
 for package in "${packages[@]}"; do
 	check_for_software "${package}"
 	echo
 done
-
-check_for_software neovim, nvim
-echo
 
 check_default_shell
 
@@ -101,6 +122,9 @@ for package in "${node_packages[@]}"; do
 	npm install -g "${package}"
 	echo
 done
+
+pip install --upgrade pip
+pip install codespell
 
 echo "Install oh-my-zsh"
 echo
