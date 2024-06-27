@@ -71,6 +71,7 @@ check_default_shell
 echo "Install asdf"
 echo
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+. "${HOME}/.asdf/asdf.sh"
 
 asdf plugin-add nodejs
 asdf plugin-add neovim
