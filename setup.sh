@@ -94,23 +94,24 @@ echo
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 . "${HOME}/.asdf/asdf.sh"
 
-asdf plugin-add nodejs
-asdf plugin-add neovim
-asdf plugin-add ruby
-asdf plugin-add python
 asdf plugin-add lua
+asdf plugin-add neovim
+asdf plugin-add nodejs
+asdf plugin-add python
+asdf plugin-add ruby
 
-asdf install nodejs 20.15.0
-asdf install neovim latest
-asdf install ruby latest
-asdf install python latest
 asdf install lua latest
+asdf install neovim latest
+asdf install nodejs 20.15.0
+asdf install python latest
+asdf install ruby latest
 
-asdf global nodejs 20.15.0
+asdf global lua latest
 asdf global neovim latest
+asdf global nodejs 20.15.0
+asdf global python latest
+asdf global python latest
 asdf global ruby latest
-asdf global python latest
-asdf global python latest
 
 node_packages=(
 	eslint_d
