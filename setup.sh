@@ -2,44 +2,44 @@
 
 # https://github.com/Parth/dotfiles
 install() {
-  # This could def use community support
-  # Don't use apt, it's also a java util and might detect that
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install "$1" -y
+	# This could def use community support
+	# Don't use apt, it's also a java util and might detect that
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get install "$1" -y
 
-  elif [ -x "$(command -v brew)" ]; then
-    brew install "$1"
+	elif [ -x "$(command -v brew)" ]; then
+		brew install "$1"
 
-  # elif [ -x "$(command -v pkg)" ]; then
-  #   sudo pkg install "$1"
-  #
-  # elif [ -x "$(command -v pacman)" ]; then
-  #   sudo pacman -S "$1"
+	# elif [ -x "$(command -v pkg)" ]; then
+	#   sudo pkg install "$1"
+	#
+	# elif [ -x "$(command -v pacman)" ]; then
+	#   sudo pacman -S "$1"
 
-  else
-    echo "I'm not sure what your package manager is! Please install $1 on
+	else
+		echo "I'm not sure what your package manager is! Please install $1 on
     your own and run this deploy script again. Tests for package managers are
     in the deploy script you just ran starting at line 13. Feel free to make
     a pull request at https://github.com/parth/dotfiles :)"
-  fi
+	fi
 }
 
 check_for_software() {
-  echo "Checking to see if $1 is installed"
-  command=${2-"$1"}
-  if ! [ -x "$(command -v "$command")" ]; then
-    install "$1"
-  else
-    echo "$1 is installed."
-  fi
+	echo "Checking to see if $1 is installed"
+	command=${2-"$1"}
+	if ! [ -x "$(command -v "$command")" ]; then
+		install "$1"
+	else
+		echo "$1 is installed."
+	fi
 }
 
 check_default_shell() {
-  if [ -z "${SHELL##*zsh*}" ] ;then
-    echo "Default shell is zsh."
-  else
-    chsh -s "$(which zsh)"
-  fi
+	if [ -z "${SHELL##*zsh*}" ]; then
+		echo "Default shell is zsh."
+	else
+		chsh -s "$(which zsh)"
+	fi
 }
 
 echo "We're going to do the following:"
@@ -49,18 +49,18 @@ echo "3. We're going to check to see if your default shell is zsh"
 echo "4. We'll try to change it if it's not"
 
 packages=(
-  zsh
-  ripgrep
-  tmux
-  pspg
-  git
-  codespell
-  credo
+	zsh
+	ripgrep
+	tmux
+	pspg
+	git
+	codespell
+	credo
 )
 
 for package in "${packages[@]}"; do
-  check_for_software "${package}"
-  echo
+	check_for_software "${package}"
+	echo
 done
 
 check_for_software neovim, nvim
@@ -74,29 +74,39 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 asdf plugin-add nodejs
 asdf plugin-add neovim
+asdf plugin-add ruby
+asdf plugin-add python
+asdf plugin-add lua
 
 asdf install nodejs 20.15.0
 asdf install neovim latest
+asdf install ruby latest
+asdf install python latest
+asdf install lua latest
+
 asdf global nodejs 20.15.0
 asdf global neovim latest
+asdf global ruby latest
+asdf global python latest
+asdf global python latest
 
 node_packages=(
-  eslint_d
-  actionlint
-  neovim
+	eslint_d
+	actionlint
+	neovim
 )
 
 for package in "${node_packages[@]}"; do
-  npm install -g "${package}"
-  echo
+	npm install -g "${package}"
+	echo
 done
 
 echo "Install oh-my-zsh"
 echo
 if [ ! -f "${HOME}/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
-fi;
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
+fi
 
 # Ensure directory exists
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=${HOME}/.config}"
@@ -122,15 +132,15 @@ ln -sf "$HOME/dotfiles/nvim/init.lua" "$XDG_CONFIG_HOME/nvim/init.lua"
 ln -sf "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim/lua"
 
 # Create dot files to reference our dotfiles
-echo "source $HOME/dotfiles/aliases" > "$HOME/.aliases"
-echo "source $HOME/dotfiles/exports" > "$HOME/.exports"
-echo "source $HOME/dotfiles/profile" > "$HOME/.profile"
-printf "[include]\n  path=%s/dotfiles/gitconfig\n" "$HOME" > "$HOME/.gitconfig"
-printf "#include dotfiles/Xresources\n" > "$HOME/.Xresources"
+echo "source $HOME/dotfiles/aliases" >"$HOME/.aliases"
+echo "source $HOME/dotfiles/exports" >"$HOME/.exports"
+echo "source $HOME/dotfiles/profile" >"$HOME/.profile"
+printf "[include]\n  path=%s/dotfiles/gitconfig\n" "$HOME" >"$HOME/.gitconfig"
+printf "#include dotfiles/Xresources\n" >"$HOME/.Xresources"
 
-echo "source $HOME/dotfiles/zsh/zshrc" > "$HOME/.zshrc"
-echo "source $HOME/dotfiles/zsh/zshenv" > "$HOME/.zshenv"
-echo "source-file $HOME/dotfiles/tmux/tmux.conf" > "$HOME/.tmux.conf"
+echo "source $HOME/dotfiles/zsh/zshrc" >"$HOME/.zshrc"
+echo "source $HOME/dotfiles/zsh/zshenv" >"$HOME/.zshenv"
+echo "source-file $HOME/dotfiles/tmux/tmux.conf" >"$HOME/.tmux.conf"
 
 ln -sf "$HOME/dotfiles/plan" "$HOME/.plan"
 ln -sf "$HOME/dotfiles/psqlrc" "$HOME/.psqlrc"
