@@ -5,13 +5,13 @@ install() {
   # This could def use community support
   # Don't use apt, it's also a java util and might detect that
   if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install "$1" -y
+    sudo apt-get install "$@" -y
 
   elif [ -x "$(command -v brew)" ]; then
-    brew install "$1"
+    brew install "$@"
 
   else
-    echo "I'm not sure what your package manager is! Please install $1 on
+    echo "I'm not sure what your package manager is! Please install $@ on
     your own and run this deploy script again."
   fi
 }
@@ -88,11 +88,8 @@ packages=(
 )
 
 update_packages
-package_list=$(
-  IFS=' '
-  echo "${packages[*]}"
-)
-install "${package_list}"
+
+install "${packages[@]}"
 
 # for package in "${packages[@]}"; do
 #   check_for_software "${package}"
