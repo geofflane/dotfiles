@@ -163,6 +163,8 @@ fi
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=${HOME}/.config}"
 mkdir -p "${XDG_CONFIG_HOME}/nvim"
 mkdir -p "${XDG_CONFIG_HOME}/alacritty"
+# Nvim is configured to use this directory for swap files
+mkdir -p "${HOME}/.vim/tmp"
 
 # echo
 # echo -n "Backing up old dotfiles. "
