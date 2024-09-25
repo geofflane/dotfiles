@@ -2,49 +2,49 @@
 
 # https://github.com/Parth/dotfiles
 install() {
-  # This could def use community support
-  # Don't use apt, it's also a java util and might detect that
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install "$@" -y
+	# This could def use community support
+	# Don't use apt, it's also a java util and might detect that
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get install "$@" -y
 
-  elif [ -x "$(command -v brew)" ]; then
-    brew install "$@"
+	elif [ -x "$(command -v brew)" ]; then
+		brew install "$@"
 
-  else
-    echo "I'm not sure what your package manager is! Please install $@ on
+	else
+		echo "I'm not sure what your package manager is! Please install $@ on
     your own and run this deploy script again."
-  fi
+	fi
 }
 
 update_packages() {
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get update && sudo apt-get dist-upgrade
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get update && sudo apt-get dist-upgrade
 
-  elif [ -x "$(command -v brew)" ]; then
-    brew update && brew upgrade
+	elif [ -x "$(command -v brew)" ]; then
+		brew update && brew upgrade
 
-  else
-    echo "I'm not sure what your package manager is! Please update packages on
+	else
+		echo "I'm not sure what your package manager is! Please update packages on
     your own and run this deploy script again."
-  fi
+	fi
 }
 
 check_for_software() {
-  echo "Checking to see if $1 is installed"
-  command=${2-"$1"}
-  if ! [ -x "$(command -v "$command")" ]; then
-    install "$1"
-  else
-    echo "$1 is installed."
-  fi
+	echo "Checking to see if $1 is installed"
+	command=${2-"$1"}
+	if ! [ -x "$(command -v "$command")" ]; then
+		install "$1"
+	else
+		echo "$1 is installed."
+	fi
 }
 
 check_default_shell() {
-  if [ -z "${SHELL##*zsh*}" ]; then
-    echo "Default shell is zsh."
-  else
-    chsh -s "$(which zsh)"
-  fi
+	if [ -z "${SHELL##*zsh*}" ]; then
+		echo "Default shell is zsh."
+	else
+		chsh -s "$(which zsh)"
+	fi
 }
 
 echo "We're going to do the following:"
@@ -54,37 +54,37 @@ echo "3. We're going to check to see if your default shell is zsh"
 echo "4. We'll try to change it if it's not"
 
 packages=(
-  autoconf
-  build-essential
-  curl
-  fd-find
-  git
-  libbz2-dev
-  libdb-dev
-  libffi-dev
-  libgdbm-dev
-  libgdbm6
-  libgmp-dev
-  liblzma-dev
-  libncurses5-dev
-  libncursesw5-dev
-  libreadline-dev
-  libreadline6-dev
-  libsqlite3-dev
-  libssl-dev
-  libxml2-dev
-  libxmlsec1-dev
-  libyaml-dev
-  patch
-  pspg
-  ripgrep
-  rustc
-  tk-dev
-  tmux
-  uuid-dev
-  xz-utils
-  zlib1g-dev
-  zsh
+	autoconf
+	build-essential
+	curl
+	fd-find
+	git
+	libbz2-dev
+	libdb-dev
+	libffi-dev
+	libgdbm-dev
+	libgdbm6
+	libgmp-dev
+	liblzma-dev
+	libncurses5-dev
+	libncursesw5-dev
+	libreadline-dev
+	libreadline6-dev
+	libsqlite3-dev
+	libssl-dev
+	libxml2-dev
+	libxmlsec1-dev
+	libyaml-dev
+	patch
+	pspg
+	ripgrep
+	rustc
+	tk-dev
+	tmux
+	uuid-dev
+	xz-utils
+	zlib1g-dev
+	zsh
 )
 
 update_packages
@@ -99,26 +99,26 @@ install "${packages[@]}"
 check_default_shell
 
 if [ ! -x "$(command -v asdf)" ]; then
-  echo "Install asdf"
-  echo
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-  . "${HOME}/.asdf/asdf.sh"
+	echo "Install asdf"
+	echo
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+	. "${HOME}/.asdf/asdf.sh"
 else
-  echo "asdf already installed"
-  echo
+	echo "asdf already installed"
+	echo
 fi
 
 asdf_packages=(
-  lua
-  neovim
-  python
-  ruby
+	lua
+	neovim
+	python
+	ruby
 )
 for package in "${asdf_packages[@]}"; do
-  asdf plugin-add "${package}"
-  asdf install "${package}" latest
-  asdf global "${package}" latest
-  echo
+	asdf plugin-add "${package}"
+	asdf install "${package}" latest
+	asdf global "${package}" latest
+	echo
 done
 
 asdf plugin-add nodejs
@@ -126,31 +126,31 @@ asdf install nodejs 20.15.0
 asdf global nodejs 20.15.0
 
 node_packages=(
-  eslint_d
-  actionlint
-  neovim
+	eslint_d
+	actionlint
+	neovim
 )
 
 for package in "${node_packages[@]}"; do
-  npm install -g "${package}"
-  echo
+	npm install -g "${package}"
+	echo
 done
 
 pip install --upgrade pip
 pip install codespell
 
 if [ ! -x "$(command -v lazygit)" ]; then
-  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-  tar xf lazygit.tar.gz lazygit
-  install lazygit /usr/local/bin
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
 fi
 
 echo "Install oh-my-zsh"
 echo
 if [ ! -f "${HOME}/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
 fi
 
 # Ensure directory exists
