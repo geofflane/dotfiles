@@ -10,26 +10,18 @@ install() {
   elif [ -x "$(command -v brew)" ]; then
     brew install "$1"
 
-  # elif [ -x "$(command -v pkg)" ]; then
-  #   sudo pkg install "$1"
-  #
-  # elif [ -x "$(command -v pacman)" ]; then
-  #   sudo pacman -S "$1"
-
   else
     echo "I'm not sure what your package manager is! Please install $1 on
-    your own and run this deploy script again. Tests for package managers are
-    in the deploy script you just ran starting at line 13. Feel free to make
-    a pull request at https://github.com/parth/dotfiles :)"
+    your own and run this deploy script again."
   fi
 }
 
 update_packages() {
   if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get update
+    sudo apt-get update && sudo apt-get dist-upgrade
 
   elif [ -x "$(command -v brew)" ]; then
-    brew update
+    brew update && brew upgrade
 
   else
     echo "I'm not sure what your package manager is! Please update packages on
@@ -96,11 +88,16 @@ packages=(
 )
 
 update_packages
+package_list=$(
+  IFS=' '
+  echo "${packages[*]}"
+)
+install "${package_list}"
 
-for package in "${packages[@]}"; do
-  check_for_software "${package}"
-  echo
-done
+# for package in "${packages[@]}"; do
+#   check_for_software "${package}"
+#   echo
+# done
 
 check_default_shell
 
