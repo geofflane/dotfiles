@@ -102,7 +102,7 @@ if [ ! -x "$(command -v mise)" ]; then
   echo "Install mise"
   echo
   curl https://mise.run | sh
-  echo ~/.local/bin/mise activate zsh)
+  eval "$(${HOME}/.local/bin/mise activate bash)"
 else
   echo "mise already installed"
   echo
@@ -115,14 +115,12 @@ mise_packages=(
   ruby
 )
 for package in "${mise_packages[@]}"; do
-  mise plugins install "${package}"
-  mise install "${package}" latest
-  mise global "${package}" latest
+  mise plugins install -y "${package}"
+  mise use --global "${package}"@latest
   echo
 done
 
-mise use node@20.17.0
-mise use --global nodejs@latest
+mise use --global nodejs@lts
 
 node_packages=(
   eslint_d
