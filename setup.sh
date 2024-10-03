@@ -135,6 +135,9 @@ done
 
 pip install --upgrade pip
 pip install codespell
+pip install neovim
+
+gem install neovim
 
 if [ ! -x "$(command -v lazygit)" ]; then
   LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
