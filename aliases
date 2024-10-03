@@ -30,23 +30,15 @@ alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 # This breaks scripts, it's not a good idea
 # alias grep='grep --color --line-number'
 
-# if neovim is available, then use that
-# if not, bu MacVim is available, then use that
-if [[ -x $(command -v nvim) ]]; then
-  alias vim='nvim -N'
-  alias vi='nvim -N'
-elif [[ -x $(command -v mvim) ]] ; then
-  alias vim='mvim -v -N'
-  alias vi='mvim -v -N'
-  alias gvim='mvim -p'
-fi
+alias vim='nvim -N'
+alias vi='nvim -N'
 
 # handle my muscle memory of typing mvim
-if [[ -x $(command -v gvim) ]] ; then
+if [[ -x $(command -v gvim) ]]; then
   alias mvim="gvim"
 fi
 
-alias mv='mv -i' # prompt before moving a file that would overwrite an existing file
+alias mv='mv -i'                               # prompt before moving a file that would overwrite an existing file
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
 
 if [[ $OSTYPE =~ ^darwin ]]; then

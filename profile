@@ -29,28 +29,27 @@ function switch() {
 }
 
 # mkdir, cd into it #
-function mkcd () {
+function mkcd() {
   mkdir -p "$*"
   cd "$*" || exit
 }
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color)
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    ;;
-  *)
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    ;;
+xterm-color)
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  ;;
+*)
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  ;;
 esac
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-  xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-    ;;
-  *)
-    ;;
+xterm* | rxvt*)
+  PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+  ;;
+*) ;;
 esac
 
 # enable programmable completion features (you don't need to enable
@@ -60,12 +59,9 @@ if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
   . "$(brew --prefix)/etc/bash_completion"
 fi
 
-export ASDF_DIR="$HOME/.asdf"
-[[ -s "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
-
 hitch() {
   command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+  if [[ -s "$HOME/.hitch_export_authors" ]]; then source "$HOME/.hitch_export_authors"; fi
 }
 alias unhitch='hitch -u'
 

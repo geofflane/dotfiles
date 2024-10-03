@@ -42,8 +42,7 @@ SPACESHIP_BATTERY_SHOW=false
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# plugins=(asdf bundler colored-man-pages gem git mix postgres rails rake-fast ruby tmux)
-plugins=(asdf colored-man-pages git mix node npm postgres tmux)
+plugins=(mise colored-man-pages git mix node npm postgres tmux)
 
 if [[ `uname` == 'Darwin' ]]; then
   plugins+=(macos)
@@ -52,11 +51,13 @@ fi
 export WORDCHARS='*?[]_-~=!#$%^(){}'
 
 source $HOME/.exports
-
 source $ZSH/oh-my-zsh.sh
+
+eval "$(${HOME}/.local/bin/mise activate zsh)"
 
 # Do it after oh-my-zsh or your CDPATH and other goodies will be clobbered
 source $HOME/.aliases
+source $HOME/.exports
 
 # don't overwrite files with > redirection by default
 setopt noclobber
