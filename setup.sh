@@ -18,7 +18,7 @@ install() {
 
 update_packages() {
   if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get update && sudo apt-get dist-upgrade
+    sudo apt-get update && sudo apt-get dist-upgrade -y
 
   elif [ -x "$(command -v brew)" ]; then
     brew update && brew upgrade
