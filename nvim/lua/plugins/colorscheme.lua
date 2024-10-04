@@ -19,21 +19,6 @@ return {
     end,
   },
 
-  { "ellisonleao/gruvbox.nvim" },
-
-  {
-    "folke/tokyonight.nvim",
-    opts = { style = "moon" },
-  },
-
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa",
-  },
   {
     "AlexvZyl/nordic.nvim",
     name = "nordic",
@@ -42,7 +27,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nordfox",
+      colorscheme = "nordic",
     },
   },
 }
