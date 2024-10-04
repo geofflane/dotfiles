@@ -30,6 +30,14 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
   },
+  {
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+  },
+  {
+    "AlexvZyl/nordic.nvim",
+    name = "nordic",
+  },
 
   {
     "LazyVim/LazyVim",
