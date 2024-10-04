@@ -1,22 +1,17 @@
+# https://alacritty.org/config-alacritty.html
+
 [font]
 size = 13
+bold = { family = "Hack Nerd Font", style = "Bold" }
+normal = { family = "Hack Nerd Font", style = "Regular" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
 
-[font.bold]
-family = "Hack Nerd Font"
-style = "Bold"
+[window]
+dimensions = { columns = 200, lines = 50 }
 
-[font.bold_italic]
-family = "Hack Nerd Font"
-style = "Bold Italic"
-
-[font.italic]
-family = "Hack Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "Hack Nerd Font"
-style = "Regular"
-
+[selection]
+save_to_clipboard = true
 
 # Copyright (c) 2016-present Sven Greb <development@svengreb.de>
 # This source code is licensed under the MIT license found in the license file.
