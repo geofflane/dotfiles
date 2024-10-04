@@ -176,7 +176,7 @@ mkdir -p "${HOME}/.vim/tmp"
 echo
 echo "Linking in other files"
 ln -sf "$HOME/dotfiles/nvim/init.lua" "$XDG_CONFIG_HOME/nvim/init.lua"
-ln -sf "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim/lua"
+ln -sf "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim"
 
 # Create dot files to reference our dotfiles
 echo "source $HOME/dotfiles/aliases" >"$HOME/.aliases"
