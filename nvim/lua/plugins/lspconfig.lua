@@ -5,6 +5,7 @@ return {
     opts = {
       servers = {
         bashls = {},
+        somesass_ls = {},
       },
     },
   },
