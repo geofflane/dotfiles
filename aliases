@@ -30,14 +30,8 @@ alias cpwd="pwd | ruby -pe'\$_.chomp!' | pbcopy" # copy path to clipboard
 # This breaks scripts, it's not a good idea
 # alias grep='grep --color --line-number'
 
-alias vim='nvim -N'
-alias vi='nvim -N'
-
-# handle my muscle memory of typing mvim
-if [[ -x $(command -v gvim) ]]; then
-  alias mvim="gvim"
-fi
-
+alias vim='nvim'
+alias vi='nvim'
 alias mv='mv -i'                               # prompt before moving a file that would overwrite an existing file
 alias lop='sudo lsof -i -P | grep -i "listen"' # show open ports
 

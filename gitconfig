@@ -7,7 +7,7 @@
   defaultBranch = main
 [core]
   excludesfile = ~/dotfiles/gitignore_global
-  editor = nvim -N -f # --nomru
+  editor = nvim --clean -f # --nomru
 [push]
   default = upstream
   followTags = true

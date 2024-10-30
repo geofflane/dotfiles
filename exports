@@ -1,20 +1,10 @@
 # vim: set filetype=sh:
 
-export EDITOR='nvim -N'
+# Clean doesn't load plugins which is useful for git commit messages. Maybe a
+# better way to do this?
+export EDITOR='nvim --clean'
 export PAGER='less -S' # Don't wrap by default
-
-# This would be better on a host specific version
-# if [[ $OSTYPE =~ ^darwin ]]; then
-#   export PGDATA=/usr/local/var/postgres
-#   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
-# fi
-
-if [[ -d ~/.cabal ]]; then
-  export PATH=~/.cabal/bin:$PATH
-fi
-
 export PATH=~/bin:/usr/local/sbin:$PATH
 
 # Enable history in iex
 export ERL_AFLAGS="-kernel shell_history enabled"
-
