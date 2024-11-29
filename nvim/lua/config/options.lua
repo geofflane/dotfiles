@@ -33,7 +33,6 @@ opt.mouse = "a" -- It's 2015 (or later) we have mice
 --
 -- ignore on completions, used by command-t at least, likely others
 opt.wildignore = ""
-opt.foldmethod = "manual" -- I don't always fold code, but when I do, I do it manually
 vim.tbl_extend("force", vim.opt.wildignore or {}, { ".git", "vendor/bundle/**", "log/**", "tmp/**" })
 
 -- Themes
