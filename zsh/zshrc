@@ -53,7 +53,7 @@ export WORDCHARS='*?[]_-~=!#$%^(){}'
 source $HOME/.exports
 source $ZSH/oh-my-zsh.sh
 
-eval "$(${HOME}/.local/bin/mise activate zsh)"
+eval "$(/usr/local/bin/mise activate zsh)"
 
 # Do it after oh-my-zsh or your CDPATH and other goodies will be clobbered
 source $HOME/.aliases

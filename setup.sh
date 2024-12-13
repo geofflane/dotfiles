@@ -101,8 +101,8 @@ check_default_shell
 if [ ! -x "$(command -v mise)" ]; then
   echo "Install mise"
   echo
-  curl https://mise.run | sh
-  eval "$(${HOME}/.local/bin/mise activate bash)"
+  curl curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
+  eval "$(/usr/local/bin/mise activate bash)"
 else
   echo "mise already installed"
   echo
