@@ -4,7 +4,7 @@
 # better way to do this?
 export EDITOR='nvim --clean'
 export PAGER='less -S' # Don't wrap by default
-export PATH=~/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:/usr/local/sbin:~/.local/bin:$PATH
 
 # Enable history in iex
 export ERL_AFLAGS="-kernel shell_history enabled"
