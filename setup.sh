@@ -58,6 +58,7 @@ packages=(
   build-essential
   curl
   fd-find
+  fzf
   git
   libbz2-dev
   libdb-dev
