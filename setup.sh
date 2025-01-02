@@ -56,6 +56,7 @@ echo "4. We'll try to change it if it's not"
 packages=(
   autoconf
   build-essential
+  codespell
   curl
   fd-find
   fzf
