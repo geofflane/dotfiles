@@ -143,7 +143,7 @@ gem install neovim
 
 if [ ! -x "$(command -v lazygit)" ]; then
   ARCH="$(arch)"
-  if [ "${ARCH}" = "aarch64"]; then
+  if [ "${ARCH}" = "aarch64" ]; then
     ARCH="arm64"
   fi
 
