@@ -128,6 +128,7 @@ node_packages=(
   eslint_d
   actionlint
   neovim
+  tree-sitter-cli
 )
 
 for package in "${node_packages[@]}"; do
