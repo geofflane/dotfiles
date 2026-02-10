@@ -123,6 +123,7 @@ for package in "${mise_packages[@]}"; do
 done
 
 mise use --global nodejs@lts
+mise use -g github:anomalyco/opencode
 
 node_packages=(
   eslint_d
