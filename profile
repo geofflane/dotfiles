@@ -20,14 +20,6 @@ export XDG_CONFIG_HOME
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# functions #
-function switch() {
-  echo "Switching to $1 version: $2"
-  sudo rm "$TOOLS/$1"
-  sudo ln -s "$TOOLS/$2" "$TOOLS/$1"
-  ls -latr "$TOOLS/$1"
-}
-
 # mkdir, cd into it #
 function mkcd() {
   mkdir -p "$*"
@@ -52,19 +44,13 @@ xterm* | rxvt*)
 *) ;;
 esac
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profiles
-# sources /etc/bash.bashrc).
-if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-  . "$(brew --prefix)/etc/bash_completion"
+# enable programmable completion features
+if [[ $OSTYPE =~ ^darwin ]] && command -v brew &>/dev/null; then
+  if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    . "$(brew --prefix)/etc/bash_completion"
+  fi
+elif [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
 fi
-
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]]; then source "$HOME/.hitch_export_authors"; fi
-}
-alias unhitch='hitch -u'
-
-# Uncomment to persist pair info between terminal instances
-# hitch
-#

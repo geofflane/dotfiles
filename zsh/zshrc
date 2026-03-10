@@ -44,7 +44,7 @@ SPACESHIP_BATTERY_SHOW=false
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(mise colored-man-pages git mix node npm postgres tmux)
 
-if [[ `uname` == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
   plugins+=(macos)
 fi
 
@@ -66,4 +66,3 @@ setopt correct
 
 autoload -U zmv
 alias mmv='noglob zmv -W'
-
