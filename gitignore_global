@@ -5,3 +5,9 @@
 .agignore
 tags
 .expert
+.env
+.env.local
+.direnv/
+*.sqlite
+*.sqlite3
+.vscode/settings.json
