@@ -166,6 +166,8 @@ fi
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=${HOME}/.config}"
 mkdir -p "${XDG_CONFIG_HOME}/nvim"
 mkdir -p "${XDG_CONFIG_HOME}/alacritty"
+mkdir -p "${XDG_CONFIG_HOME}/ghostty"
+
 # Nvim is configured to use this directory for swap files
 mkdir -p "${HOME}/.vim/tmp"
 
@@ -186,6 +188,8 @@ echo
 echo "Linking in other files"
 ln -sf "$HOME/dotfiles/nvim/init.lua" "$XDG_CONFIG_HOME/nvim/init.lua"
 ln -sf "$HOME/dotfiles/nvim/lua" "$XDG_CONFIG_HOME/nvim"
+
+echo "config-file = $HOME/dotfiles/config.ghostty" >"$XDG_CONFIG_HOME/ghostty/config.ghostty"
 
 # Create dot files to reference our dotfiles
 echo "source $HOME/dotfiles/aliases" >"$HOME/.aliases"

@@ -1,0 +1,5 @@
+theme = Nordfox
+font-family = Hack Nerd Font Mono
+
+# When I ssh into a devcontainer native shift+enter doesn't work.
+keybind = shift+enter=text:\x1b[13;2u
