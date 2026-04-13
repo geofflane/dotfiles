@@ -2,49 +2,49 @@
 
 # https://github.com/Parth/dotfiles
 install() {
-  # This could def use community support
-  # Don't use apt, it's also a java util and might detect that
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install "$@" -y
+	# This could def use community support
+	# Don't use apt, it's also a java util and might detect that
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get install "$@" -y
 
-  elif [ -x "$(command -v brew)" ]; then
-    brew install "$@"
+	elif [ -x "$(command -v brew)" ]; then
+		brew install "$@"
 
-  else
-    echo "I'm not sure what your package manager is! Please install $@ on
+	else
+		echo "I'm not sure what your package manager is! Please install $@ on
     your own and run this deploy script again."
-  fi
+	fi
 }
 
 update_packages() {
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get update && sudo apt-get dist-upgrade -y
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get update && sudo apt-get dist-upgrade -y
 
-  elif [ -x "$(command -v brew)" ]; then
-    brew update && brew upgrade
+	elif [ -x "$(command -v brew)" ]; then
+		brew update && brew upgrade
 
-  else
-    echo "I'm not sure what your package manager is! Please update packages on
+	else
+		echo "I'm not sure what your package manager is! Please update packages on
     your own and run this deploy script again."
-  fi
+	fi
 }
 
 check_for_software() {
-  echo "Checking to see if $1 is installed"
-  command=${2-"$1"}
-  if ! [ -x "$(command -v "$command")" ]; then
-    install "$1"
-  else
-    echo "$1 is installed."
-  fi
+	echo "Checking to see if $1 is installed"
+	command=${2-"$1"}
+	if ! [ -x "$(command -v "$command")" ]; then
+		install "$1"
+	else
+		echo "$1 is installed."
+	fi
 }
 
 check_default_shell() {
-  if [ -z "${SHELL##*zsh*}" ]; then
-    echo "Default shell is zsh."
-  else
-    chsh -s "$(which zsh)"
-  fi
+	if [ -z "${SHELL##*zsh*}" ]; then
+		echo "Default shell is zsh."
+	else
+		chsh -s "$(which zsh)"
+	fi
 }
 
 echo "We're going to do the following:"
@@ -54,39 +54,40 @@ echo "3. We're going to check to see if your default shell is zsh"
 echo "4. We'll try to change it if it's not"
 
 packages=(
-  autoconf
-  build-essential
-  codespell
-  curl
-  fd-find
-  fzf
-  git
-  libbz2-dev
-  libdb-dev
-  libffi-dev
-  libgdbm-dev
-  libgdbm6
-  libgmp-dev
-  liblzma-dev
-  libncurses5-dev
-  libncursesw5-dev
-  libreadline-dev
-  libreadline6-dev
-  libsqlite3-dev
-  libssl-dev
-  libxml2-dev
-  libxmlsec1-dev
-  libyaml-dev
-  patch
-  pspg
-  ripgrep
-  rustc
-  tk-dev
-  tmux
-  uuid-dev
-  xz-utils
-  zlib1g-dev
-  zsh
+	autoconf
+	build-essential
+	codespell
+	curl
+	fd-find
+	fzf
+	git
+	libbz2-dev
+	libdb-dev
+	libffi-dev
+	libgdbm-dev
+	libgdbm6
+	libgmp-dev
+	liblzma-dev
+	libncurses5-dev
+	libncursesw5-dev
+	libreadline-dev
+	libreadline6-dev
+	libsqlite3-dev
+	libssl-dev
+	libxml2-dev
+	libxmlsec1-dev
+	libyaml-dev
+	patch
+	pspg
+	ripgrep
+	rustc
+	tk-dev
+	tmux
+	unzip
+	uuid-dev
+	xz-utils
+	zlib1g-dev
+	zsh
 )
 
 update_packages
@@ -101,40 +102,38 @@ install "${packages[@]}"
 check_default_shell
 
 if [ ! -x "$(command -v mise)" ]; then
-  echo "Install mise"
-  echo
-  curl curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
-  eval "$(/usr/local/bin/mise activate bash)"
+	echo "Install mise"
+	echo
+	curl curl https://mise.run | sudo MISE_INSTALL_PATH=/usr/local/bin/mise sh
+	eval "$(/usr/local/bin/mise activate bash)"
 else
-  echo "mise already installed"
-  echo
+	echo "mise already installed"
+	echo
 fi
 
 mise_packages=(
-  lua
-  neovim
-  python
-  ruby
+	lua
+	neovim
 )
 for package in "${mise_packages[@]}"; do
-  mise plugins install -y "${package}"
-  mise use --global "${package}"@latest
-  echo
+	mise plugins install -y "${package}"
+	mise use --global "${package}"@latest
+	echo
 done
 
 mise use --global nodejs@lts
 mise use -g github:anomalyco/opencode
 
 node_packages=(
-  eslint_d
-  actionlint
-  neovim
-  tree-sitter-cli
+	eslint_d
+	actionlint
+	neovim
+	tree-sitter-cli
 )
 
 for package in "${node_packages[@]}"; do
-  npm install -g "${package}"
-  echo
+	sudo npm install -g "${package}"
+	echo
 done
 
 pip install --upgrade pip
@@ -144,22 +143,22 @@ pip install neovim
 gem install neovim
 
 if [ ! -x "$(command -v lazygit)" ]; then
-  ARCH="$(arch)"
-  if [ "${ARCH}" = "aarch64" ]; then
-    ARCH="arm64"
-  fi
+	ARCH="$(arch)"
+	if [ "${ARCH}" = "aarch64" ]; then
+		ARCH="arm64"
+	fi
 
-  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH}.tar.gz"
-  tar xf lazygit.tar.gz lazygit
-  sudo install lazygit /usr/local/bin
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH}.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
 fi
 
 echo "Install oh-my-zsh"
 echo
 if [ ! -f "${HOME}/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/dotfiles/zsh/zsh_custom/themes/spaceship-prompt"
 fi
 
 # Ensure directory exists
